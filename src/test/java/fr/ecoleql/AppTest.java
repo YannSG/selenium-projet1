@@ -53,7 +53,7 @@ public class AppTest {
     public void test() throws Exception {
 
         pageIndex.clickIconCreerProjet(driver);
-        wait.until(ExpectedConditions.elementToBeClickable(pageIndex.fieldNom));
+        wait.until(ExpectedConditions.elementToBeClickable(pageIndex.buttonAccepter));
         pageIndex.creerProjet(driver, "PROJET_TEST1", "PRJTEST001");
 
         // try {
@@ -66,7 +66,7 @@ public class AppTest {
 
     @After
     public void after() throws Exception {
-        driver.quit();
+       // driver.quit();
         Reporting.writeReport(errors);
     }
 
