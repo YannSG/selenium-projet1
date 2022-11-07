@@ -1,6 +1,8 @@
 package fr.ecoleql;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.io.FileInputStream;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -46,15 +48,24 @@ public class AppTest {
     }
 
     @Test
-    public void test() throws Exception {
-
-        // try {
-        // assertTrue("La vérité", false);
-        // } catch (AssertionError e) {
-        // errors.add(e);
-        // Reporting.takeScreenShot(driver, "Ceci est vrai");
-        // }
+    public void GRE_01() throws Exception {
+        WebPage pageParticipants = pageIndex.clickMenuRessource(driver, MenuRessources.PARTICIPANTS);
+        try {
+            assertEquals("Titre de page", "Liste des participants", pageParticipants.getWebPageTitle());
+        } catch (AssertionError e) {
+            errors.add(e);
+        }
     }
+
+    // @Test
+    // public void test() throws Exception {
+    // try {
+    // assertTrue("La vérité", false);
+    // } catch (AssertionError e) {
+    // errors.add(e);
+    // Reporting.takeScreenShot(driver, "Ceci est vrai");
+    // }
+    // }
 
     @After
     public void after() throws Exception {
