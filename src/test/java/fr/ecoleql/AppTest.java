@@ -12,6 +12,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import fr.ecoleql.utilities.Browser;
 import fr.ecoleql.utilities.Driver;
@@ -24,6 +26,7 @@ public class AppTest {
     private List<Error> errors = new ArrayList<>();
 
     PageIndex pageIndex;
+    WebDriverWait wait;
 
     @Before
     public void before() throws Exception {
@@ -32,6 +35,7 @@ public class AppTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         params = new Properties();
         params.load(new FileInputStream("src/main/resources/JDD/params.properties"));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         // Instancier la page login
         driver.get(params.getProperty("baseUrl"));
         PageLogin pageLogin = PageFactory.initElements(driver, PageLogin.class);
@@ -47,6 +51,10 @@ public class AppTest {
 
     @Test
     public void test() throws Exception {
+
+        pageIndex.clickIconCreerProjet(driver);
+        wait.until(ExpectedConditions.elementToBeClickable(pageIndex.fieldNom));
+        pageIndex.creerProjet(driver, "PROJET_TEST1", "PRJTEST001");
 
         // try {
         // assertTrue("La vérité", false);
