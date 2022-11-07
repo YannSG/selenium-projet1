@@ -41,7 +41,7 @@ public class AppTest {
         pageIndex = pageLogin.login(driver, params.getProperty("username"), params.getProperty("password"));
         // Vérifier le titre de la page
         try {
-            assertEquals("Accès à la page index", "LibrePlan: Calendrier", driver.getTitle());
+            assertTrue("Connexion effectuée", pageIndex.isLoggedIn());
         } catch (AssertionError e) {
             errors.add(e);
         }
@@ -49,11 +49,12 @@ public class AppTest {
 
     @Test
     public void GRE_01() throws Exception {
-        WebPage pageParticipants = pageIndex.clickMenuRessource(driver, MenuRessources.PARTICIPANTS);
+        PageParticipants pageParticipants = pageIndex.clickMenuRessourcesParticipants(driver, MenuRessources.PARTICIPANTS);
         try {
-            assertEquals("Titre de page", "Liste des participants", pageParticipants.getWebPageTitle());
+            assertTrue("Tous les éléments de la page 'Liste des participants' sont présents", pageParticipants.pageElementsArePresents());
         } catch (AssertionError e) {
             errors.add(e);
+            Reporting.takeScreenShot(driver, "IHM PageParticipants");
         }
     }
 

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 public class WebPage {
 
     @FindBy(xpath = "//div[@class=\"z-window-embedded-header\"]")
-    WebElement titreWebPage;
+    WebElement webPageTitle;
 
     // Checkbox
     public void setCheckbox(WebElement webElement, boolean bool) {
@@ -39,7 +39,7 @@ public class WebPage {
 
     // Titre
     public String getWebPageTitle() {
-        return titreWebPage.getText();
+        return webPageTitle.getText();
     }
 
 }
