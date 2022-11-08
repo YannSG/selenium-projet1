@@ -48,8 +48,6 @@ public class PageIndex extends MainMenu {
     public PageProjet creerProjet(WebDriver driver, String Nom, String valeurCode) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
-        /* suitcher ver frame id = "z_ddstkup" */
-        // driver.switchTo().frame("z_ddstkup");
         // ecrire le nom
         fieldNom.clear();
         fieldNom.sendKeys(Nom);

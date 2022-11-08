@@ -3,6 +3,7 @@ package fr.ecoleql;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,13 +27,13 @@ public class PageParticipants extends MainMenu {
     WebElement txtColEnFile;
     @FindBy(xpath = "//div[@class='clickable-rows z-grid']//div[contains(text(),'Opérations')]")
     WebElement txtColOperations;
-    @FindBy(xpath = "//span[contains(text(),'Filtré par')]//following::input[1]")
+    @FindBy(xpath = "//span[text()='Filtré par']//following::input[1]")
     WebElement fieldFiltrePar;
-    @FindBy(xpath = "//span[contains(text(),'Détails personnels')]//following::input[1]")
+    @FindBy(xpath = "//span[text()='Détails personnels']//following::input[1]")
     WebElement fieldDetailPersonnels;
     @FindBy(xpath = "//td[contains(text(),'Plus d')][contains(text(),'options')]")
     WebElement btnPlusDOptions;
-    @FindBy(xpath = "//td[contains(text(),'Filtre')]")
+    @FindBy(xpath = "//td[text()='Filtre']")
     WebElement btnFiltre;
     @FindBy(xpath = "//div[@class='z-window-embedded'][1]//td[text()='Créer']")
     WebElement btnCreer;
@@ -72,6 +73,15 @@ public class PageParticipants extends MainMenu {
             wait.until(ExpectedConditions.elementToBeClickable(btnOKPopUp));
             btnOuiPopUp.click();
         }
+    }
+
+    public void filter(WebDriver driver, String nom) {
+        // Explicit wait
+        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        // Filtrer
+        fieldDetailPersonnels.sendKeys(nom);
+        btnFiltre.click();
+        wait.until(ExpectedConditions.elementToBeClickable(btnCreer));
     }
 
     public boolean verifID(WebDriver driver, String ID) {

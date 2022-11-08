@@ -97,18 +97,34 @@ public class AppTest {
             assertTrue("[PageParticipants] - Le nom du participant créé n'apparaît pas dans le tableau",
                     pageParticipants.verifNom(driver, params.getProperty("participantNom")));
             assertTrue("[PageParticipants] - Le prénom du participant créé n'apparaît pas dans le tableau",
-                    pageParticipants.verifNom(driver, params.getProperty("participantPrenom")));
+                    pageParticipants.verifPrenom(driver, params.getProperty("participantPrenom")));
             assertTrue("[PageParticipants] - L'ID du participant créé n'apparaît pas dans le tableau",
-                    pageParticipants.verifNom(driver, params.getProperty("participantID")));
+                    pageParticipants.verifID(driver, params.getProperty("participantID")));
         } catch (AssertionError e) {
             errors.add(e);
             Reporting.takeScreenShot(driver,
                     "[PageParticipants] - Le nouveau participant créer n'apparaît pas correctement dans le tableau");
         }
+        // PDT 6 = Filtrer par détails personnels
+        pageParticipants.filter(driver, params.getProperty("participantPrenom"));
+        try {
+            assertTrue("[PageParticipants] - Le nom du participant filtré n'apparaît pas dans le tableau",
+                    pageParticipants.verifNom(driver, params.getProperty("participantNom")));
+            assertTrue("[PageParticipants] - Le prénom du participant filtré n'apparaît pas dans le tableau",
+                    pageParticipants.verifPrenom(driver,
+                            params.getProperty("participantPrenom")));
+            assertTrue("[PageParticipants] - L'ID du participant filtré n'apparaît pas dans le tableau",
+                    pageParticipants.verifID(driver, params.getProperty("participantID")));
+        } catch (AssertionError e) {
+            errors.add(e);
+            Reporting.takeScreenShot(driver,
+                    "[PageParticipants] - Le participant filtré n'apparaît pas correctement dans le tableau");
+        }
         // Supprimer le participant et l'utilisateur lié créés
         pageParticipants.deleteParticipant(driver, params.getProperty("participantID"), true);
         try {
-            assertTrue("[PageParticipants] - Le message de validation 'Travailleur et utilisateur lié supprimés' ne s'affiche pas",
+            assertTrue(
+                    "[PageParticipants] - Le message de validation 'Travailleur et utilisateur lié supprimés' ne s'affiche pas",
                     pageParticipants.txtMsgValidationSuppression.isDisplayed());
         } catch (AssertionError e) {
             errors.add(e);
