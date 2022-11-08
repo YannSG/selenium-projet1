@@ -1,9 +1,9 @@
 package fr.ecoleql;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,6 +33,12 @@ public class PageParticipants extends MainMenu {
     WebElement fieldDetailPersonnels;
     @FindBy(xpath = "//td[contains(text(),'Plus d')][contains(text(),'options')]")
     WebElement btnPlusDOptions;
+    @FindBy(xpath = "//span[text()='Période active depuis']//following::input[1]")
+    WebElement dateDebutPeriode;
+    @FindBy(xpath = "//span[text()='à']//following::input[1]")
+    WebElement dateFinPeriode;
+    @FindBy(xpath = "//select[@selectedindex='0']")
+    WebElement menuType;
     @FindBy(xpath = "//td[text()='Filtre']")
     WebElement btnFiltre;
     @FindBy(xpath = "//div[@class='z-window-embedded'][1]//td[text()='Créer']")
@@ -41,6 +47,14 @@ public class PageParticipants extends MainMenu {
     WebElement txtMsgValidationCreation;
     @FindBy(xpath = "//span[text()='Travailleur et utilisateur lié supprimés']")
     WebElement txtMsgValidationSuppression;
+    
+    public List<WebElement> getMenuType(WebDriver driver) {
+        return getMenuSelectedOptions(menuType);
+    }
+
+    public void setMenuType(WebDriver driver, String string) {
+        getSelect(menuType).selectByVisibleText(string);
+    }
 
     public PageCreerParticipant clickBtnCreer(WebDriver driver) {
         // Explicit wait
@@ -53,6 +67,14 @@ public class PageParticipants extends MainMenu {
         wait.until(ExpectedConditions.elementToBeClickable(pageCreerParticipant.btnEnregistrer));
 
         return pageCreerParticipant;
+    }
+
+    public void clickBtnPlusDOptions(WebDriver driver) {
+        // Explicit wait
+        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        // Cliquer sur le bouton "plus d'options"
+        btnPlusDOptions.click();
+        wait.until(ExpectedConditions.elementToBeClickable(menuType));
     }
 
     public void deleteParticipant(WebDriver driver, String ID, boolean utilisateurLie) {

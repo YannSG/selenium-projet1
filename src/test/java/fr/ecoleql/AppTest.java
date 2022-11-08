@@ -120,6 +120,23 @@ public class AppTest {
             Reporting.takeScreenShot(driver,
                     "[PageParticipants] - Le participant filtré n'apparaît pas correctement dans le tableau");
         }
+        // PDT 7 = Menu 'Plus d'options'
+        pageParticipants.clickBtnPlusDOptions(driver);
+        try {
+            assertTrue(
+                    "[PageParticipants] - Le champs 'Date de début de préiode active' n'apparaît pas dans 'Plus d'options'",
+                    pageParticipants.dateDebutPeriode.isDisplayed());
+            assertTrue(
+                    "[PageParticipants] - Le champs 'Date de fin de préiode active' n'apparaît pas dans 'Plus d'options'",
+                    pageParticipants.dateFinPeriode.isDisplayed());
+            assertEquals("[PageParticipants] - Le type 'Tous' n'est pas sélectionné par défaut dans 'Plus d'options'",
+                    "Tous",
+                    pageParticipants.getMenuType(driver).get(0).getText());
+        } catch (AssertionError e) {
+            errors.add(e);
+            Reporting.takeScreenShot(driver,
+                    "[PageParticipants] - Le menu 'Plus d'option' n'apparaît pas correctement");
+        }
         // Supprimer le participant et l'utilisateur lié créés
         pageParticipants.deleteParticipant(driver, params.getProperty("participantID"), true);
         try {
