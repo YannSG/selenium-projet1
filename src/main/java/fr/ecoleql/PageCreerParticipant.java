@@ -36,6 +36,14 @@ public class PageCreerParticipant extends MainMenu {
     WebElement radioUtilisateurLieUtilisateurExistant;
     @FindBy(xpath = "//label[text()='Créer un nouvel utilisateur']/../input[@type='radio']")
     WebElement radioUtilisateurLieCreerUnNouvelUtilisateur;
+    @FindBy(xpath = "//span[contains(text(),'Nom')][contains(text(),'utilisateur')]//ancestor::tr//input")
+    WebElement fieldNomUtilisateur;
+    @FindBy(xpath = "//span[text()='Mot de passe']//ancestor::tr//input")
+    WebElement fieldMDP;
+    @FindBy(xpath = "//span[text()='Confirmation du mot de passe']//ancestor::tr//input")
+    WebElement fieldConfirmMDP;
+    @FindBy(xpath = "//span[text()='Email']//ancestor::tr//input")
+    WebElement fieldEmail;
     @FindBy(xpath = "//td[text()='Enregistrer']")
     WebElement btnEnregistrer;
     @FindBy(xpath = "//td[text()='Sauver et continuer']")
@@ -51,16 +59,32 @@ public class PageCreerParticipant extends MainMenu {
         getSelect(menuType).selectByVisibleText(string);
     }
 
-    // public PageCreerParticipant clickBtnCreer(WebDriver driver) {
-    // // Explicit wait
-    // wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+    public void saisirDonneesDeBase(WebDriver driver, String prenom, String nom, String ID) {
+        // Explicit wait
+        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        // Renseigner les informations du formulaire
+        fieldPrenom.sendKeys(prenom);
+        fieldNom.sendKeys(nom);
+        fieldID.sendKeys(ID);
+    }
 
-    // // Instancier la nouvelle page
-    // PageCreerParticipant pageCreerParticipant = PageFactory.initElements(driver,
-    // PageCreerParticipant.class);
-    // // Attendre que le bouton de déconnexion soit cliquable
-    // wait.until(ExpectedConditions.elementToBeClickable(pageCreerParticipant.btnEnregistrer));
+    public void creerNouvelUtilisateur(WebDriver driver, String nom, String mdp, String mail) {
+        // Explicit wait
+        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        // Renseigner les informations du formulaire
+        fieldNomUtilisateur.sendKeys(nom);
+    }
 
-    // return pageCreerParticipant;
-    // }
+    public PageParticipants enregistrer(WebDriver driver) {
+        // Explicit wait
+        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        // Instancier la nouvelle page
+        PageParticipants pageParticipants = PageFactory.initElements(driver,
+                PageParticipants.class);
+        // Attendre que le bouton de création de participant soit cliquable
+        wait.until(ExpectedConditions.elementToBeClickable(pageParticipants.btnCreer));
+
+        return pageParticipants;
+    }
+
 }

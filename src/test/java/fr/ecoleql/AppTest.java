@@ -13,16 +13,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import fr.ecoleql.utilities.Browser;
 import fr.ecoleql.utilities.Driver;
 import fr.ecoleql.utilities.Reporting;
 
-public class YannAppTest {
+public class AppTest {
 
     private Properties params;
     private WebDriver driver;
@@ -98,6 +94,12 @@ public class YannAppTest {
             errors.add(e);
             Reporting.takeScreenShot(driver, "[PageCreerParticipant] - Eléments par défaut");
         }
+        // PDT 5 = Créer un nouveau participant
+        pageCreerParticipant.saisirDonneesDeBase(driver, params.getProperty("participantPrenom"),
+                params.getProperty("participantNom"), params.getProperty("participantID"));
+        pageCreerParticipant.radioUtilisateurLieCreerUnNouvelUtilisateur.click();
+        pageCreerParticipant.creerNouvelUtilisateur(driver, params.getProperty("utilisateurNom"),
+                params.getProperty("utilisateurMDP"), params.getProperty("utilisateurMail"));
     }
 
     @After

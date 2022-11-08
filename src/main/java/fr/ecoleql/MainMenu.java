@@ -37,12 +37,22 @@ public class MainMenu extends WebPage {
     private Actions actions;
 
     public PageParticipants clickMenuRessourcesParticipants(WebDriver driver, MenuRessources ressources) {
+        // Explicit wait
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        // Instancier actions
         actions = new Actions(driver);
+        // Se déplacer sur le bouton
         actions.moveToElement(menuRessources, 0, 0).perform();
+        // Attendre que le bouton soit cliquable
         wait.until(ExpectedConditions.elementToBeClickable(menuRessourcesParticipant));
+        // Cliquer sur le bouton
         menuRessourcesParticipant.click();
-        return PageFactory.initElements(driver, PageParticipants.class);
+        // Instancier la nouvelle page
+        PageParticipants pageParticipants = PageFactory.initElements(driver, PageParticipants.class);
+        // Attendre que le bouton de création de participant soit cliquable
+        wait.until(ExpectedConditions.elementToBeClickable(pageParticipants.btnCreer));
+
+        return pageParticipants;
     }
 
     public boolean isLoggedIn() {
