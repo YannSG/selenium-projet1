@@ -1,0 +1,6 @@
+2022-11-08T12:38:54.015029500
+expected:<Les modifications non enregistrées seront perdues. Êtes-vous sûr ?> but was:<[[ChromeDriver: chrome on WINDOWS (ade9df6268b56443714d142d223c183c)] -> xpath: //span[.='Les modifications non enregistrées seront perdues. Êtes-vous sûr ?']]>
+2022-11-08T12:38:54.015029500
+expected:<Les modifications non enregistrées seront perdues. Êtes-vous sûr ?> but was:<[[ChromeDriver: chrome on WINDOWS (ade9df6268b56443714d142d223c183c)] -> xpath: //span[.='Les modifications non enregistrées seront perdues. Êtes-vous sûr ?']]>
+2022-11-08T12:38:54.015029500
+le menue WBS est present
