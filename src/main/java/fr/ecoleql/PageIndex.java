@@ -38,6 +38,8 @@ public class PageIndex extends MainMenu {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public void clickIconCreerProjet(WebDriver driver) {
+        // Explicit wait
+        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         buttonCreerProjet.click();
         wait.until(ExpectedConditions.elementToBeClickable(buttonAccepter));
         // return PageFactory.initElements(driver, PageProjet.class);
