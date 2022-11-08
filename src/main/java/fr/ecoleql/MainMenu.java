@@ -36,7 +36,7 @@ public class MainMenu extends WebPage {
 
     private Actions actions;
 
-    public PageParticipants clickMenuRessourcesParticipants(WebDriver driver, MenuRessources ressources) {
+    public PageParticipants clickMenuRessourcesParticipants(WebDriver driver) {
         // Explicit wait
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         // Instancier actions
