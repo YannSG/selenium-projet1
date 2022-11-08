@@ -16,9 +16,9 @@
     @Test
     public void REFERENCE_DU_TEST() throws Exception {
         // PDT NUMERO_DU_PAS_DE_TEST + description
-        action
+        // action = A MODIFIER
         try {
-            ASSERTION
+            // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
         } catch (AssertionError e) {
             errors.add(e);
             Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
