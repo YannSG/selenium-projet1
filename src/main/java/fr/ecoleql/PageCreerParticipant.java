@@ -81,6 +81,7 @@ public class PageCreerParticipant extends MainMenu {
     public PageParticipants enregistrer(WebDriver driver) {
         // Explicit wait
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        btnEnregistrer.click();
         // Instancier la nouvelle page
         PageParticipants pageParticipants = PageFactory.initElements(driver,
                 PageParticipants.class);
