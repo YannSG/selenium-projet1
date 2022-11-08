@@ -12,7 +12,7 @@ public class WebPage {
     WebElement webPageTitle;
 
     // Checkbox
-    public void setCheckbox(WebElement webElement, boolean bool) {
+    public static void setCheckbox(WebElement webElement, boolean bool) {
         if (webElement.isSelected()) {
             if (bool == true) {
             } else {
