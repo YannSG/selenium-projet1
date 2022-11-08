@@ -52,8 +52,7 @@ public class AppTest {
     @Test
     public void GRE_01() throws Exception {
         // PDT 2 = Afficher la page "Liste des participants"
-        PageParticipants pageParticipants = pageIndex.clickMenuRessourcesParticipants(driver,
-                MenuRessources.PARTICIPANTS);
+        PageParticipants pageParticipants = pageIndex.clickMenuRessourcesParticipants(driver);
         // PDT 3 = Afficher la page "Créer un participant"
         PageCreerParticipant pageCreerParticipant = pageParticipants.clickBtnCreer(driver);
         try {
