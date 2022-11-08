@@ -1,0 +1,8 @@
+2022-11-08T11:50:21.782615600
+Accès à la page index expected:<[LibrePlan: Calendrier]> but was:<[]>
+2022-11-08T11:50:21.782615600
+expected:<Les modifications non enregistrées seront perdues. Êtes-vous sûr ?> but was:<[[ChromeDriver: chrome on WINDOWS (4e5be21ae73505956705339bdc95d1f8)] -> xpath: //span[.='Les modifications non enregistrées seront perdues. Êtes-vous sûr ?']]>
+2022-11-08T11:50:21.782615600
+expected:<Les modifications non enregistrées seront perdues. Êtes-vous sûr ?> but was:<[[ChromeDriver: chrome on WINDOWS (4e5be21ae73505956705339bdc95d1f8)] -> xpath: //span[.='Les modifications non enregistrées seront perdues. Êtes-vous sûr ?']]>
+2022-11-08T11:50:21.782615600
+le menue WBS est present
