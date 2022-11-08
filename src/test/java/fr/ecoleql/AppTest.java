@@ -54,19 +54,6 @@ public class AppTest {
         }
     }
 
-    // @Test pour le cas projet et taches
-    @Test
-    public void REFERENCE_DU_TEST() throws Exception {
-        System.out.println("test");
-        // PDT NUMERO_DU_PAS_DE_TEST + description
-        // action = A MODIFIER
-        // try {
-        // // ASSERTION ( = assertTrue / assertEquals) = A MODIFIER
-        // } catch (AssertionError e) {
-        // errors.add(e);
-        // }
-    }
-
     @Test
     public void GRE_01() throws Exception {
         // PDT 2 = Afficher la page "Liste des participants"
@@ -83,79 +70,8 @@ public class AppTest {
             errors.add(e);
             Reporting.takeScreenShot(driver, "[PageCreerParticipant] - Onglet par défaut");
         }
+
         // PDT 4 = Vérifier la conformité de la page "Créer un participant"
-    public void PRO_TA_01() throws Exception {
-
-        // Appel à la methode clickIconCreerProjet dans PageIndex
-        pageIndex.clickIconCreerProjet(driver);
-        wait.until(ExpectedConditions.elementToBeClickable(pageIndex.buttonAccepter));
-
-        //Appel à la methode "creerProjet" et Instanciation de la PageProjet
-        PageProjet pageprojet =  pageIndex.creerProjet(driver, "PROJET_TEST1", "PRJTEST001");
-        wait.until(ExpectedConditions.visibilityOf(pageprojet.menuWbs));
-
-        //Verification de la creation du projet: (Titre de l'oglet horizontal Menue WBS ="WBS (tâches)")
-        try {
-            assertEquals("WBS (tâches)", pageprojet.menuWbs.getText());
-        } catch (AssertionError e) {
-            errors.add(e);
-        }
-
-        
-        
-        //Appel à la methode cliquer sur le bouton d'annulation d'edition (pour tester le bouton annuler)
-        pageprojet.clikButtonAnnulerEditionProjet(driver);
-
-        //Verifier que la PopUp est bien apparue
-        try {
-            assertEquals(pageprojet.textPopUpAVerifier, pageprojet.textPopUp);
-                } catch (AssertionError e) {
-                  errors.add(e);
-                }
-
-         //Appel à la methode clique sur le bouton annuler de PopUp
-        pageprojet.clikButtonAnnulerPopUp(driver);
-
-         //Verification de la creation du projet existe toujour
-         try {
-            assertEquals("WBS (tâches)", pageprojet.menuWbs.getText());
-        } catch (AssertionError e) {
-            errors.add(e);
-        }
-
-        // Rappeler la methode cliquer sur le bouton d'annulation d'edition (pour tester le bouton ok) 
-        pageprojet.clikButtonAnnulerEditionProjet(driver);
-
-        //Verifier que la PopUp est bien apparue
-        try {
-            assertEquals(pageprojet.textPopUpAVerifier, pageprojet.textPopUp);
-                } catch (AssertionError e) {
-                  errors.add(e);
-                }
-
-         //Appel à la methode clique sur le bouton OK de PopUp
-        pageprojet.clikButtonOkPopUp(driver);
-
-         //Verification de la creation du projet est bien annulé (Absence des element WBS de menu)
-         try {
-            assertFalse("le menue WBS est present", pageprojet.menuWbs.isDisplayed());
-        } catch (AssertionError e) {
-            errors.add(e);
-        }
-
-        
-            
-
-       
-        
-
-       
-
-        // try {
-        // assertTrue(Integer.toString(i), .isDisplayed());
-        // } catch (AssertionError e) {
-        // errors.add(e);
-        // }
         try {
             assertTrue("Le bouton 'Générer le code' n'est pas sélectionné par défaut",
                     pageCreerParticipant.chkCode.isSelected());
@@ -175,9 +91,72 @@ public class AppTest {
                 params.getProperty("utilisateurMDP"), params.getProperty("utilisateurMail"));
     }
 
+    @Test
+    public void PRO_TA_01() throws Exception {
+
+        // Appel à la methode clickIconCreerProjet dans PageIndex
+        pageIndex.clickIconCreerProjet(driver);
+        wait.until(ExpectedConditions.elementToBeClickable(pageIndex.buttonAccepter));
+
+        // Appel à la methode "creerProjet" et Instanciation de la PageProjet
+        PageProjet pageprojet = pageIndex.creerProjet(driver, "PROJET_TEST1", "PRJTEST001");
+        wait.until(ExpectedConditions.visibilityOf(pageprojet.menuWbs));
+
+        // Verification de la creation du projet: (Titre de l'oglet horizontal Menue WBS
+        // ="WBS (tâches)")
+        try {
+            assertEquals("WBS (tâches)", pageprojet.menuWbs.getText());
+        } catch (AssertionError e) {
+            errors.add(e);
+        }
+
+        // Appel à la methode cliquer sur le bouton d'annulation d'edition (pour tester
+        // le bouton annuler)
+        pageprojet.clikButtonAnnulerEditionProjet(driver);
+
+        // Verifier que la PopUp est bien apparue
+        try {
+            assertEquals(pageprojet.textPopUpAVerifier, pageprojet.textPopUp);
+        } catch (AssertionError e) {
+            errors.add(e);
+        }
+
+        // Appel à la methode clique sur le bouton annuler de PopUp
+        pageprojet.clikButtonAnnulerPopUp(driver);
+
+        // Verification de la creation du projet existe toujour
+        try {
+            assertEquals("WBS (tâches)", pageprojet.menuWbs.getText());
+        } catch (AssertionError e) {
+            errors.add(e);
+        }
+
+        // Rappeler la methode cliquer sur le bouton d'annulation d'edition (pour tester
+        // le bouton ok)
+        pageprojet.clikButtonAnnulerEditionProjet(driver);
+
+        // Verifier que la PopUp est bien apparue
+        try {
+            assertEquals(pageprojet.textPopUpAVerifier, pageprojet.textPopUp);
+        } catch (AssertionError e) {
+            errors.add(e);
+        }
+
+        // Appel à la methode clique sur le bouton OK de PopUp
+        pageprojet.clikButtonOkPopUp(driver);
+
+        // Verification de la creation du projet est bien annulé (Absence des element
+        // WBS de menu)
+        try {
+            assertFalse("le menue WBS est present", pageprojet.menuWbs.isDisplayed());
+        } catch (AssertionError e) {
+            errors.add(e);
+        }
+    }
+
     @After
     public void after() throws Exception {
-       // driver.quit();
+        // driver.quit();
         Reporting.writeReport(errors);
     }
 
