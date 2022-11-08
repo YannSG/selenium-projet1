@@ -21,7 +21,7 @@ import fr.ecoleql.utilities.Browser;
 import fr.ecoleql.utilities.Driver;
 import fr.ecoleql.utilities.Reporting;
 
-public class AppTest {
+public class AppTestFatima {
 
     private Properties params;
     private WebDriver driver;
