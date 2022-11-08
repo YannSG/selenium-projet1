@@ -15,7 +15,7 @@
     
     @Test
     public void REFERENCE_DU_TEST() throws Exception {
-        // PDT NUMERO_DU_PAS_DE_TEST
+        // PDT NUMERO_DU_PAS_DE_TEST + description
         action
         try {
             ASSERTION
