@@ -65,7 +65,6 @@ public class AppTest {
             errors.add(e);
             Reporting.takeScreenShot(driver, "[PageCreerParticipant] - Onglet par défaut");
         }
-
         // PDT 4 = Vérifier la conformité de la page "Créer un participant"
         try {
             assertTrue("Le bouton 'Générer le code' n'est pas sélectionné par défaut",
@@ -84,6 +83,7 @@ public class AppTest {
         pageCreerParticipant.radioUtilisateurLieCreerUnNouvelUtilisateur.click();
         pageCreerParticipant.creerNouvelUtilisateur(driver, params.getProperty("utilisateurNom"),
                 params.getProperty("utilisateurMDP"), params.getProperty("utilisateurMail"));
+        pageCreerParticipant.btnEnregistrer.click();
     }
 
     @Test
