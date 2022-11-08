@@ -54,6 +54,7 @@ public class PageIndex extends MainMenu {
     @FindBy(xpath = "//img[@src='/libreplan/common/img/ico_add.png']")
     public WebElement buttonCreerProjet;
 
+    
     public void clickIconCreerProjet(WebDriver driver) {
         buttonCreerProjet.click();
         // return PageFactory.initElements(driver, PageProjet.class);
