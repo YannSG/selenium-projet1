@@ -21,14 +21,21 @@ public class PageLogin extends MainMenu {
     WebElement btnLogin;
 
     public PageIndex login(WebDriver driver, String username, String password) {
+        // Explicit wait
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        // Entrer le username
         fieldUsername.clear();
         fieldUsername.sendKeys(username);
+        // Entrer le mot de passe
         fieldPassword.clear();
         fieldPassword.sendKeys(password);
+        // Valider
         btnLogin.click();
+        // Instancier la nouvelle page
         PageIndex pageIndex = PageFactory.initElements(driver, PageIndex.class);
+        // Attendre que le bouton de déconnexion soit cliquable
         wait.until(ExpectedConditions.elementToBeClickable(pageIndex.btnLogout));
+
         return pageIndex;
     }
 

@@ -1,56 +1,52 @@
 package fr.ecoleql;
 
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PageParticipants extends MainMenu {
 
+    WebDriverWait wait;
+
     @FindBy(xpath = "//div[@class='clickable-rows z-grid']//div[contains(text(),'Surnom')]")
-    private WebElement txtColSurnom;
+    WebElement txtColSurnom;
     @FindBy(xpath = "//div[@class='clickable-rows z-grid']//div[contains(text(),'Prénom')]")
-    private WebElement txtColPrenom;
+    WebElement txtColPrenom;
     @FindBy(xpath = "//div[@class='clickable-rows z-grid']//div[contains(text(),'ID')]")
-    private WebElement txtColID;
+    WebElement txtColID;
     @FindBy(xpath = "//div[@class='clickable-rows z-grid']//div[contains(text(),'Code')]")
-    private WebElement txtColCode;
+    WebElement txtColCode;
     @FindBy(xpath = "//div[@class='clickable-rows z-grid']//div[contains(text(),'En file')]")
-    private WebElement txtColEnFile;
+    WebElement txtColEnFile;
     @FindBy(xpath = "//div[@class='clickable-rows z-grid']//div[contains(text(),'Opérations')]")
-    private WebElement txtColOperations;
-
+    WebElement txtColOperations;
     @FindBy(xpath = "//span[contains(text(),'Filtré par')]//following::input[1]")
-    private WebElement fieldFiltrePar;
+    WebElement fieldFiltrePar;
     @FindBy(xpath = "//span[contains(text(),'Détails personnels')]//following::input[1]")
-    private WebElement fieldDetailPersonnels;
-
+    WebElement fieldDetailPersonnels;
     @FindBy(xpath = "//td[contains(text(),'Plus d')][contains(text(),'options')]")
-    private WebElement btnPlusDOptions;
+    WebElement btnPlusDOptions;
     @FindBy(xpath = "//td[contains(text(),'Filtre')]")
-    private WebElement btnFiltre;
+    WebElement btnFiltre;
+    @FindBy(xpath = "//div[@class='z-window-embedded'][1]//td[text()='Créer']")
+    WebElement btnCreer;
 
-    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/span[1]/table[1]/tbody[1]/tr[2]/td[2]")
-    private WebElement btnCreer;
+    public PageCreerParticipant clickBtnCreer(WebDriver driver) {
+        // Explicit wait
+        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
-    public void creerParticipant() {
         btnCreer.click();
-    }
+        // Instancier la nouvelle page
+        PageCreerParticipant pageCreerParticipant = PageFactory.initElements(driver, PageCreerParticipant.class);
+        // Attendre que le bouton de déconnexion soit cliquable
+        wait.until(ExpectedConditions.elementToBeClickable(pageCreerParticipant.btnEnregistrer));
 
-    public boolean pageElementsArePresents() {
-        if (txtColSurnom.isDisplayed()
-                && txtColPrenom.isDisplayed()
-                && txtColID.isDisplayed()
-                && txtColCode.isDisplayed()
-                && txtColEnFile.isDisplayed()
-                && txtColOperations.isDisplayed()
-                && fieldFiltrePar.isDisplayed()
-                && fieldDetailPersonnels.isDisplayed()
-                && btnPlusDOptions.isDisplayed()
-                && btnFiltre.isDisplayed()
-                && btnCreer.isDisplayed()) {
-            return true;
-        } else {
-            return false;
-        }
+        return pageCreerParticipant;
     }
 
 }
