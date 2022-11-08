@@ -15,9 +15,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import fr.ecoleql.utilities.Browser;
 import fr.ecoleql.utilities.Driver;
 import fr.ecoleql.utilities.Reporting;
@@ -29,7 +26,6 @@ public class AppTest {
     private List<Error> errors = new ArrayList<>();
 
     PageIndex pageIndex;
-    WebDriverWait wait;
 
     @Before
     public void before() throws Exception {
@@ -40,7 +36,6 @@ public class AppTest {
         // Récupérer les propriétes
         params = new Properties();
         params.load(new FileInputStream("src/main/resources/JDD/params.properties"));
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         // Instancier la page login
         driver.get(params.getProperty("baseUrl"));
         PageLogin pageLogin = PageFactory.initElements(driver, PageLogin.class);
@@ -96,11 +91,9 @@ public class AppTest {
 
         // Appel à la methode clickIconCreerProjet dans PageIndex
         pageIndex.clickIconCreerProjet(driver);
-        wait.until(ExpectedConditions.elementToBeClickable(pageIndex.buttonAccepter));
 
         // Appel à la methode "creerProjet" et Instanciation de la PageProjet
         PageProjet pageprojet = pageIndex.creerProjet(driver, "PROJET_TEST1", "PRJTEST001");
-        wait.until(ExpectedConditions.visibilityOf(pageprojet.menuWbs));
 
         // Verification de la creation du projet: (Titre de l'oglet horizontal Menue WBS
         // ="WBS (tâches)")

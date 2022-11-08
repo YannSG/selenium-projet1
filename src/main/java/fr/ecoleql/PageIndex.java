@@ -13,50 +13,33 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PageIndex extends MainMenu {
 
-    // @FindBy(id = "xVzP48")
     @FindBy(xpath = "//span[.='Nom']/following::input[1]")
-    // @FindBy(xpath="[@class='z-textbox z-textbox-text-invalid']")
     WebElement fieldNom;
-
-    // @FindBy(id = "xVzPk8-real")
     @FindBy(xpath = "//label[.='Générer le code']/preceding-sibling::input[@type='checkbox']")
     WebElement checkboxGenererCode;
-
-    // @FindBy(id = "xVzPj8")
-    // @FindBy(xpath="[@class='z-textbox z-textbox-text-invalid']")
     @FindBy(xpath = "//span[.='Code']/following::input[1]")
     WebElement fieldCode;
-
-    /* @FindBy(id = "xVzPj8") */
     @FindBy(xpath = "//span[.='Date de début']/following::input[1]")
     WebElement fieldDate;
-
-    // @FindBy(id = "xVzPq8-real")
     @FindBy(xpath = "//span[.='Echéance']/following::input[1]")
     WebElement fieldEcheance;
-
-    // @FindBy(id = "xVzPha-real")
     @FindBy(xpath = "//div[@class='z-window-modal-cnt-noborder']//input[@class='z-combobox-inp']")
     WebElement comboboxCalendrier;
-
     @FindBy(xpath = "//td[contains(text(),'Accepter')]")
     WebElement buttonAccepter;
-
-    WebDriverWait wait;
-
-    // String dateAujourdhui;
-
-    // c'est pour la date d'aaujourd'hui
-    static LocalDateTime now = LocalDateTime.now();
-    // Definir le format de la date
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
     @FindBy(xpath = "//img[@src='/libreplan/common/img/ico_add.png']")
     public WebElement buttonCreerProjet;
 
-    
+    WebDriverWait wait;
+
+    // Récupérer la date présente
+    static LocalDateTime now = LocalDateTime.now();
+    // Définir le format de la date
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
     public void clickIconCreerProjet(WebDriver driver) {
         buttonCreerProjet.click();
+        wait.until(ExpectedConditions.elementToBeClickable(buttonAccepter));
         // return PageFactory.initElements(driver, PageProjet.class);
     }
 
@@ -92,8 +75,12 @@ public class PageIndex extends MainMenu {
             buttonAccepter.click();
         }
 
-        return PageFactory.initElements(driver, PageProjet.class);
+        // Instancier la nouvelle page
+        PageProjet pageProjet = PageFactory.initElements(driver, PageProjet.class);
+        // Attendre que le bouton soit cliquable
+        wait.until(ExpectedConditions.visibilityOf(pageProjet.menuWbs));
 
+        return pageProjet;
     }
 
 }
