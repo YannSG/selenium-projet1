@@ -1,14 +1,14 @@
 package fr.ecoleql;
 
 import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class PageProjet extends MainMenu {
+public class DetailDuProjet extends MainMenu {
 
     WebDriverWait wait;
 
@@ -37,10 +37,14 @@ public class PageProjet extends MainMenu {
     }
 
     // Creation de la methode cliquer sur le bouton OK de PoupUp
-    public void clikButtonOkPopUp(WebDriver driver) {
+    public PageIndex clikButtonOkPopUp(WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.elementToBeClickable(btnOKPopUp));
         btnOKPopUp.click();
+        // Instancier la nouvelle page "ListesProjets"
+        PageIndex pageIndex = PageFactory.initElements(driver, PageIndex.class);
+
+        return pageIndex;
     }
 
     // Verifier la creation d'un projet
