@@ -19,6 +19,15 @@
     * Un Page Object n'a pas besoin de couvrir toute la page ou le formulaire. 
     Il peut contrôler une section ou une autre partie spécifique de celle-ci.
 
+#GitHub rules :
+
+    Blablabla
+
+#Agilité :
+
+    Kanban blablabla
+    Cérémonies agiles blablabla (Stand Up, et autres blablabla)
+
 ------------------------------
 Template des cas/pas de test :
 ------------------------------
