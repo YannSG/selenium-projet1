@@ -134,7 +134,7 @@ public class AppTest {
             Reporting.takeScreenShot(driver,
                     "[PageParticipants] - Le menu 'Plus d'option' n'apparaît pas correctement");
         }
-        // Teardown : Supprimer le participant et l'utilisateur lié créés
+        // Teardown = Supprimer le participant et l'utilisateur lié créés
         pageParticipants.deleteParticipant(driver, params.getProperty("participantID"), true);
         try {
             assertTrue(
@@ -150,20 +150,22 @@ public class AppTest {
     // @Test sur la creation des projets
     @Test
     public void creationDeProjet() throws Exception {
-        // Appel à la methode clickIconCreerProjet dans PageIndex
+        // PDT 2 = Accéder au formulaire de création d'un projet
         pageIndex.clickIconCreerProjet(driver);
-        // Appel à la methode "creerProjet" et Instanciation de la PageProjet
+        // PDT 3 = Créer un projet - Bouton [Accepter]
         PageDetailsProjet pageDetailsProjet = pageIndex.creerProjet(driver, params.getProperty("projetNom"),
                 params.getProperty("projetCode"));
-        // Verification de la creation du projet: (Titre de l'oglet horizontal Menue WBS
-        // ="WBS (tâches)")
         try {
             assertTrue("[PageDetailsProjet] - L'onglet 'WBS (tâches) n'apparaît pas",
+                    pageDetailsProjet.menuDetailDuProjet.isDisplayed());
+            assertTrue("[PageDetailsProjet] - Le menu 'Détail du projet' n'apparaît pas",
                     pageDetailsProjet.tabWbs.isDisplayed());
         } catch (AssertionError e) {
             errors.add(e);
+            Reporting.takeScreenShot(driver,
+                    "[PageDetailsProjet] - Erreur lors de la création de projet");
         }
-        // Vérifier le nom et la présence des onglets présent dans le menu vertical
+        // PDT 4 = Vérifier les onglets - menu vertical
         try {
             assertEquals(
                     "Le menu 'Planification de projet' n'apparait pas sur le menu vertical de la page DetailDuProjet",
@@ -184,7 +186,7 @@ public class AppTest {
             errors.add(e);
             Reporting.takeScreenShot(driver, "[PageCreerParticipant] - Eléments par défaut");
         }
-        // Vérifier le nom et la présence des onglets présent dans le menu horizontal
+        // PDT 5 = Vérifier les onglets - menu horizontal
         try {
             assertTrue("L'onglet 'WBS (tâches)' n'apparaît pas",
                     pageDetailsProjet.tabWbs.isDisplayed());
@@ -208,10 +210,8 @@ public class AppTest {
             errors.add(e);
             Reporting.takeScreenShot(driver, "[PageCreerParticipant] - Eléments par défaut");
         }
-        // Appel à la methode cliquer sur le bouton d'annulation d'edition (pour tester
-        // le bouton annuler)
+        // PDT 7 = Utilisation du bouton d'annulation de l'édition du projet (1/4)
         pageDetailsProjet.clikButtonAnnulerEditionProjet(driver);
-        // Verifier que la PopUp est bien apparue
         try {
             assertEquals(
                     "[PageDetailsProjet] - Le message de confirmation d'annulation des modifications du projet n'apparaît pas correctement",
@@ -220,19 +220,20 @@ public class AppTest {
         } catch (AssertionError e) {
             errors.add(e);
         }
-        // Appel à la methode clique sur le bouton annuler de PopUp
+        // PDT 8 = Utilisation du bouton d'annulation de l'édition du projet (2/4)
         pageDetailsProjet.clikButtonAnnulerPopUp(driver);
-        // Verification de la creation du projet existe toujour
         try {
-            assertEquals("[PageDetailsProjet] - L'onglet 'WBS (tâches) n'apparaît pas", "WBS (tâches)",
-                    pageDetailsProjet.tabWbs.getText());
+            assertTrue("[PageDetailsProjet] - L'onglet 'WBS (tâches) n'apparaît pas",
+                    pageDetailsProjet.menuDetailDuProjet.isDisplayed());
+            assertTrue("[PageDetailsProjet] - Le menu 'Détail du projet' n'apparaît pas",
+                    pageDetailsProjet.tabWbs.isDisplayed());
         } catch (AssertionError e) {
             errors.add(e);
+            Reporting.takeScreenShot(driver,
+                    "[PageDetailsProjet] - Erreur lors de l'utilisation du bouton d'annulation de l'édition du projet");
         }
-        // Rappeler la methode cliquer sur le bouton d'annulation d'edition (pour tester
-        // le bouton ok)
+        // PDT 9 = Utilisation du bouton d'annulation de l'édition du projet (3/4)
         pageDetailsProjet.clikButtonAnnulerEditionProjet(driver);
-        // Verifier que la PopUp est bien apparue
         try {
             assertEquals(
                     "[PageDetailsProjet] - Le message de confirmation d'annulation des modifications du projet n'apparaît pas correctement",
@@ -241,19 +242,18 @@ public class AppTest {
         } catch (AssertionError e) {
             errors.add(e);
         }
-        // Appel à la methode clique sur le bouton OK de PopUp
+        // PDT 10 = Utilisation du bouton d'annulation de l'édition du projet (4/4)
         PageIndex pageIndex = pageDetailsProjet.clikButtonOkPopUp(driver);
-        // Verifier l'affichage de menu Planification des projets
         try {
             assertTrue("[PageIndex] - Le menu 'Planification des projets' n'apparaît pas",
                     pageIndex.btnPlanificationProjet.isDisplayed());
+            assertTrue("[PageDetailsProjet] - Le menu horizontal de détail du projet apparaît toujours",
+                    pageDetailsProjet.menuDetailDuProjet.toString().contains("DefaultElementLocator "));
         } catch (AssertionError e) {
             errors.add(e);
         }
-        // verifier la creation du projet-->> Appel a la methode
-        // clickMenuCalendierProjet
+        // PDT 11 = Vérifier la création du projet
         PageListeProjets pageListesProjet = pageIndex.clickMenuCalendierProjet(driver);
-        // Verifier l'affichage de menu Listes des progets des projets
         try {
             assertTrue("[PageListesProjet] - Le menu 'Liste des projets' n'apparaît pas",
                     pageListesProjet.btnListeProjets.isDisplayed());

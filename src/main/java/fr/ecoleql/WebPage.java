@@ -47,11 +47,7 @@ public class WebPage {
         return list;
     }
 
-    // Titre
-    public String getWebPageTitle() {
-        return webPageTitle.getText();
-    }
-
+    // Tableaux
     @SuppressWarnings("null")
     public int getTableLineByContent(WebDriver driver, boolean equals, String string) {
         int i = 1;
@@ -76,6 +72,11 @@ public class WebPage {
             i++;
         }
         return (Integer) null;
+    }
+
+    // Titre
+    public String getWebPageTitle() {
+        return webPageTitle.getText();
     }
 
 }
