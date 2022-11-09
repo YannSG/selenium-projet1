@@ -92,7 +92,7 @@ public class PageParticipants extends MainMenu {
         wait.until(ExpectedConditions.elementToBeClickable(btnOKPopUp));
         btnOKPopUp.click();
         if (utilisateurLie == true) {
-            wait.until(ExpectedConditions.elementToBeClickable(btnOKPopUp));
+            wait.until(ExpectedConditions.elementToBeClickable(btnOuiPopUp));
             btnOuiPopUp.click();
         }
     }

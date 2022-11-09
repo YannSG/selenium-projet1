@@ -19,7 +19,8 @@ import fr.ecoleql.utilities.Reporting;
 
 public class AppTest {
 
-    private Properties params;
+    private Properties constants;
+    private Properties variables;
     private WebDriver driver;
     private List<Error> errors = new ArrayList<>();
 
@@ -32,13 +33,15 @@ public class AppTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         // Récupérer les propriétes
-        params = new Properties();
-        params.load(new FileInputStream("src/main/resources/JDD/params.properties"));
+        constants = new Properties();
+        constants.load(new FileInputStream("src/main/resources/JDD/constants.properties"));
+        variables = new Properties();
+        variables.load(new FileInputStream("src/main/resources/JDD/variables.properties"));
         // Instancier la page login
-        driver.get(params.getProperty("baseUrl"));
+        driver.get(constants.getProperty("BASEURL"));
         PageLogin pageLogin = PageFactory.initElements(driver, PageLogin.class);
         // Se connecter et accéder à la page index
-        pageIndex = pageLogin.login(driver, params.getProperty("username"), params.getProperty("password"));
+        pageIndex = pageLogin.login(driver, constants.getProperty("USERNAME"), constants.getProperty("PASSWORD"));
         // Vérifier le titre de la page
         try {
             assertTrue("[PageIndex] - Le bouton 'Déconnexion' n'apparaît pas", pageIndex.isLoggedIn());
@@ -76,11 +79,11 @@ public class AppTest {
             Reporting.takeScreenShot(driver, "[PageCreerParticipant] - Eléments par défaut");
         }
         // PDT 5 = Créer un participant - Bouton [Enregistrer]
-        pageCreerParticipant.saisirDonneesDeBase(driver, params.getProperty("participantPrenom"),
-                params.getProperty("participantNom"), params.getProperty("participantID"));
+        pageCreerParticipant.saisirDonneesDeBase(driver, variables.getProperty("participantPrenom"),
+                variables.getProperty("participantNom"), variables.getProperty("participantID"));
         pageCreerParticipant.radioUtilisateurLieCreerUnNouvelUtilisateur.click();
-        pageCreerParticipant.creerNouvelUtilisateur(driver, params.getProperty("utilisateurNom"),
-                params.getProperty("utilisateurMDP"), params.getProperty("utilisateurMail"));
+        pageCreerParticipant.creerNouvelUtilisateur(driver, variables.getProperty("utilisateurNom"),
+                variables.getProperty("utilisateurMDP"), variables.getProperty("utilisateurMail"));
         pageParticipants = pageCreerParticipant.enregistrer(driver);
         try {
             assertTrue("[PageParticipants] - Le message de validation 'Participant enregistré' ne s'affiche pas",
@@ -92,26 +95,26 @@ public class AppTest {
         }
         try {
             assertTrue("[PageParticipants] - Le nom du participant créé n'apparaît pas dans le tableau",
-                    pageParticipants.verifNom(driver, params.getProperty("participantNom")));
+                    pageParticipants.verifNom(driver, variables.getProperty("participantNom")));
             assertTrue("[PageParticipants] - Le prénom du participant créé n'apparaît pas dans le tableau",
-                    pageParticipants.verifPrenom(driver, params.getProperty("participantPrenom")));
+                    pageParticipants.verifPrenom(driver, variables.getProperty("participantPrenom")));
             assertTrue("[PageParticipants] - L'ID du participant créé n'apparaît pas dans le tableau",
-                    pageParticipants.verifID(driver, params.getProperty("participantID")));
+                    pageParticipants.verifID(driver, variables.getProperty("participantID")));
         } catch (AssertionError e) {
             errors.add(e);
             Reporting.takeScreenShot(driver,
                     "[PageParticipants] - Le nouveau participant créer n'apparaît pas correctement dans le tableau");
         }
         // PDT 6 = Utilisation du filtre "Détails personnels"
-        pageParticipants.filter(driver, params.getProperty("participantPrenom"));
+        pageParticipants.filter(driver, variables.getProperty("participantPrenom"));
         try {
             assertTrue("[PageParticipants] - Le nom du participant filtré n'apparaît pas dans le tableau",
-                    pageParticipants.verifNom(driver, params.getProperty("participantNom")));
+                    pageParticipants.verifNom(driver, variables.getProperty("participantNom")));
             assertTrue("[PageParticipants] - Le prénom du participant filtré n'apparaît pas dans le tableau",
                     pageParticipants.verifPrenom(driver,
-                            params.getProperty("participantPrenom")));
+                            variables.getProperty("participantPrenom")));
             assertTrue("[PageParticipants] - L'ID du participant filtré n'apparaît pas dans le tableau",
-                    pageParticipants.verifID(driver, params.getProperty("participantID")));
+                    pageParticipants.verifID(driver, variables.getProperty("participantID")));
         } catch (AssertionError e) {
             errors.add(e);
             Reporting.takeScreenShot(driver,
@@ -136,7 +139,7 @@ public class AppTest {
         }
 
         // Teardown = Supprimer le participant et l'utilisateur lié créés
-        pageParticipants.deleteParticipant(driver, params.getProperty("participantID"), true);
+        pageParticipants.deleteParticipant(driver, variables.getProperty("participantID"), true);
         try {
             assertTrue(
                     "[PageParticipants] - Le message de validation 'Travailleur et utilisateur lié supprimés' ne s'affiche pas",
@@ -154,8 +157,8 @@ public class AppTest {
         // PDT 2 = Accéder au formulaire de création d'un projet
         pageIndex.clickIconCreerProjet(driver);
         // PDT 3 = Créer un projet - Bouton [Accepter]
-        PageDetailsProjet pageDetailsProjet = pageIndex.creerProjet(driver, params.getProperty("projetNom"),
-                params.getProperty("projetCode"));
+        PageDetailsProjet pageDetailsProjet = pageIndex.creerProjet(driver, variables.getProperty("projetNom"),
+                variables.getProperty("projetCode"));
         try {
             assertTrue("[PageDetailsProjet] - L'onglet 'WBS (tâches) n'apparaît pas",
                     pageDetailsProjet.menuDetailDuProjet.isDisplayed());
@@ -263,7 +266,7 @@ public class AppTest {
         }
 
         // Teardown : Supprimer le participant et l'utilisateur lié créés
-        pageListesProjet.deleteProjet(driver, params.getProperty("projetCode"));
+        pageListesProjet.deleteProjet(driver, variables.getProperty("projetCode"));
         try {
             assertTrue(
                     "[PageListeProjets] - Le message de validation de suppression ne s'affiche pas",
