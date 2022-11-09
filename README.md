@@ -1,10 +1,13 @@
 # selenium-projet1
  Projet 1 - Groupe 3
 
-----------------------------------------
- Bonnes pratiques pour les PageObjects :
-----------------------------------------
-    
+------------------
+ Bonnes pratiques :
+------------------
+
+PageObjects :
+------------
+
     Lorsque vous découpez votre architecture d’automatisation en couches et que vous concevez les Page Objects, 
     vous devez respecter plusieurs règles générales :
     
