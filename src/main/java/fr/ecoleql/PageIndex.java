@@ -30,7 +30,9 @@ public class PageIndex extends MainMenu {
     @FindBy(xpath = "//img[@src='/libreplan/common/img/ico_add.png']")
     public WebElement buttonCreerProjet;
     @FindBy(xpath = "//td[contains(text(),'Planification des projets')]")
-    public static WebElement buttonPlanificationProjet;
+    public WebElement btnPlanificationProjet;
+    @FindBy(xpath = "//td[contains(text(),'Liste des projets')]")
+    public WebElement btnListeProjets;
 
     WebDriverWait wait;
 
@@ -48,7 +50,7 @@ public class PageIndex extends MainMenu {
 
     // Créer un projet : Remplir les champs du modale et cliquer sur le Bouton
     // "Accepter"
-    public DetailDuProjet creerProjet(WebDriver driver, String Nom, String valeurCode) {
+    public PageDetailsProjet creerProjet(WebDriver driver, String Nom, String valeurCode) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
         // ecrire le nom
@@ -75,7 +77,7 @@ public class PageIndex extends MainMenu {
         }
 
         // Instanciation de la page : DetailDuProjet
-        DetailDuProjet detailDuProjet = PageFactory.initElements(driver, DetailDuProjet.class);
+        PageDetailsProjet detailDuProjet = PageFactory.initElements(driver, PageDetailsProjet.class);
         // Attendre que le bouton "menuWbs" soit cliquable
         wait.until(ExpectedConditions.visibilityOf(detailDuProjet.menuWbs));
         return detailDuProjet;
