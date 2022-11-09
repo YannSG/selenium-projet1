@@ -54,6 +54,8 @@ public class PageIndex extends MainMenu {
         // Créer un projet : Remplir les champs du modale et cliquer sur le Bouton "Accepter" 
     public DetailDuProjet creerProjet(WebDriver driver, String Nom, String valeurCode) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+
+        // ecrire le nom
         fieldNom.clear();
         fieldNom.sendKeys(Nom);
         // Appel à la méthode setCheckbox pour verifier et decoucher le chekbox

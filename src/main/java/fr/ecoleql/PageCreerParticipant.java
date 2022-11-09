@@ -73,11 +73,15 @@ public class PageCreerParticipant extends MainMenu {
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         // Renseigner les informations du formulaire
         fieldNomUtilisateur.sendKeys(nom);
+        fieldMDP.sendKeys(mdp);
+        fieldConfirmMDP.sendKeys(mdp);
+        fieldEmail.sendKeys(mail);
     }
 
     public PageParticipants enregistrer(WebDriver driver) {
         // Explicit wait
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        btnEnregistrer.click();
         // Instancier la nouvelle page
         PageParticipants pageParticipants = PageFactory.initElements(driver,
                 PageParticipants.class);
