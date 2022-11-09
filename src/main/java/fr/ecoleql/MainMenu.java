@@ -19,8 +19,11 @@ public class MainMenu extends WebPage {
 
     @FindBy(xpath = "//button[contains(text(),'Ressources')]")
     WebElement menuRessources;
-    @FindBy(xpath = "//a[@href='/libreplan/resources/worker/worker.zul']")
-    WebElement menuRessourcesParticipant;
+    @FindBy(xpath = "//a[@href='/libreplan/resources/worker/worker.zul']") // mieux? --> //a[@class='z-menu-item-cnt'][contains(normalize-space(),'Participants')]
+    WebElement menuRessourcesParticipant; //FIXME --> menuRessourcesParticipants (s manquant...) 
+    @FindBy(xpath = "//a[@class='z-menu-item-cnt'][contains(normalize-space(),'Critère')]") 
+    WebElement menuRessourcesCritere;
+
     @FindBy(xpath = "//button[contains(text(),'Coût')]")
     WebElement menuCout;
     @FindBy(xpath = "//button[contains(text(),'Configuration')]")
@@ -38,20 +41,39 @@ public class MainMenu extends WebPage {
     protected Actions actions;
     private WebDriverWait wait;
 
+    public PageCritere clickMenuRessourcesCritere(WebDriver driver) {
+        // Explicit wait
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        // Instancier actions
+        actions = new Actions(driver);
+        // Se déplacer sur l'option
+        actions.moveToElement(menuRessources, 0, 0).perform();
+        // Attendre que la sous-option soit cliquable
+        wait.until(ExpectedConditions.elementToBeClickable(menuRessourcesCritere));
+        // Cliquer sur la sous-option
+        menuRessourcesCritere.click();
+        // Instancier la nouvelle page
+        PageCritere pageCritere = PageFactory.initElements(driver, PageCritere.class);
+        // Attendre que le bouton de création d'item soit cliquable
+        wait.until(ExpectedConditions.elementToBeClickable(pageCritere.btnCreer));
+
+        return pageCritere;
+    }
+
     public PageParticipants clickMenuRessourcesParticipants(WebDriver driver) {
         // Explicit wait
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         // Instancier actions
         actions = new Actions(driver);
-        // Se déplacer sur le bouton
+        // Se déplacer sur l'option
         actions.moveToElement(menuRessources, 0, 0).perform();
-        // Attendre que le bouton soit cliquable
+        // Attendre que la sous-option soit cliquable
         wait.until(ExpectedConditions.elementToBeClickable(menuRessourcesParticipant));
-        // Cliquer sur le bouton
+        // Cliquer sur la sous-option
         menuRessourcesParticipant.click();
         // Instancier la nouvelle page
         PageParticipants pageParticipants = PageFactory.initElements(driver, PageParticipants.class);
-        // Attendre que le bouton de création de participant soit cliquable
+        // Attendre que le bouton de création de c soit cliquable
         wait.until(ExpectedConditions.elementToBeClickable(pageParticipants.btnCreer));
 
         return pageParticipants;
@@ -62,13 +84,13 @@ public class MainMenu extends WebPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         // Instancier actions
         actions = new Actions(driver);
-        // Se déplacer sur le bouton
+        // Se déplacer sur l'option
         wait.until(ExpectedConditions.elementToBeClickable(menuCalendrier));
         wait.until(ExpectedConditions.elementToBeClickable(menuCalendrier));
         actions.moveToElement(menuCalendrier).build().perform();
-        // Attendre que le bouton soit cliquable
+        // Attendre que la sous-option soit cliquable
         wait.until(ExpectedConditions.elementToBeClickable(optionProjetMenuCalendrier));
-        // Cliquer sur le bouton
+        // Cliquer sur la sous-option
         optionProjetMenuCalendrier.click();
         // Instancier la nouvelle page "ListesProjets"
         PageListeProjets pageListeProjets = PageFactory.initElements(driver, PageListeProjets.class);

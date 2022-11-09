@@ -51,6 +51,157 @@ public class AppTest {
     }
 
     @Test
+    public void Scenario_01_Criteres_CRI_01_AdministrationDesCriteres() throws Exception {
+    // // Test fonctionnel CRI_01 - Administration des critères
+    // // PDT 1 --> @Before
+    // // PDT 2 : Accéder à la page d'administration des calendriers :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 3 : Créer un calendrier - Accès au formulaire de création :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 4 : Créer un calendrier - bouton [Enregistrer] :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 5 : Créer un calendrier dérivé :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 6 : Créer un critère - bouton [Enregistrer] :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 7 : Créer un critère - Accès au formulaire de création :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 8 : Créer un critère - bouton [Sauver et continuer] :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 9 : Retour page d'administration des critères :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 10 : Modifier un critère - accès formulaire de modification - Colonne "Opération" :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 11 : Modifier un critère -  Bouton [Annuler] :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 12 : Modifier un critère - accès formulaire de modification - Colonne "Nom" :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 13 : Modifier un critère - modification du nom :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 14 : Modifier un critère - bouton [Sauver et continuer] :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 15 : Retour page d'administration des critères :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 16 : Supprimer un critère - Pop-up de confirmation :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 17 : Supprimer un critère - Bouton [Annuler] :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 18 : Supprimer un critère - Pop-up de confirmation :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    // // PDT 19 : Supprimer un critère - Bouton [OK] :
+    // // action = A MODIFIER
+    // try {
+    //     // ASSERTION ( = assertTrue / assertEquals) =  A MODIFIER
+    // } catch (AssertionError e) {
+    //     errors.add(e);
+    //     Reporting.takeScreenShot(driver, NOM_DU_SCREENSHOT);
+    // }
+    
+}
+
+    @Test
     public void creationParticipant() throws Exception {
         // PDT 2 = Accéder à la page de gestion des participants
         PageParticipants pageParticipants = pageIndex.clickMenuRessourcesParticipants(driver);
