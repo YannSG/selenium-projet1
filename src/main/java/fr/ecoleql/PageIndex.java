@@ -13,6 +13,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PageIndex extends MainMenu {
 
+    // Menu latéral vertical
+    @FindBy(xpath = "//td[contains(text(),'Planification des projets')]")
+    WebElement menuPlanificationDesProjets;
+    @FindBy(xpath = "//td[contains(text(),'Liste des projets')]")
+    WebElement menuListeDesProjets;
+    @FindBy(xpath = "//td[contains(text(),'Chargement des ressources')]")
+    WebElement menuChargementDesRessources;
+    @FindBy(xpath = "//td[contains(text(),'Calendrier des ressources en file')]")
+    WebElement menuCalendrierDesRessourcesEnFile;
+
+    // Popup de création de projet
     @FindBy(xpath = "//span[.='Nom']/following::input[1]")
     WebElement fieldNom;
     @FindBy(xpath = "//label[.='Générer le code']/preceding-sibling::input[@type='checkbox']")
@@ -79,7 +90,7 @@ public class PageIndex extends MainMenu {
         // Instanciation de la page : DetailDuProjet
         PageDetailsProjet detailDuProjet = PageFactory.initElements(driver, PageDetailsProjet.class);
         // Attendre que le bouton "menuWbs" soit cliquable
-        wait.until(ExpectedConditions.visibilityOf(detailDuProjet.menuWbs));
+        wait.until(ExpectedConditions.visibilityOf(detailDuProjet.tabWbs));
         return detailDuProjet;
     }
 

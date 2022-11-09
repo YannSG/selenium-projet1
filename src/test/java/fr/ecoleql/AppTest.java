@@ -158,66 +158,56 @@ public class AppTest {
         // Verification de la creation du projet: (Titre de l'oglet horizontal Menue WBS
         // ="WBS (tâches)")
         try {
-            assertEquals("[PageDetailsProjet] - L'onglet 'WBS (tâches) n'apparaît pas", "WBS (tâches)",
-                    pageDetailsProjet.menuWbs.getText());
+            assertTrue("[PageDetailsProjet] - L'onglet 'WBS (tâches) n'apparaît pas",
+                    pageDetailsProjet.tabWbs.isDisplayed());
         } catch (AssertionError e) {
             errors.add(e);
         }
-
         // Vérifier le nom et la présence des onglets présent dans le menu vertical
         try {
             assertEquals(
-                    "Le menu 'Planification du projet' n'apparait pas sur le menu vertical de la page DetailDuProjet",
-                    "Planification du projet", pageDetailsProjet.menuPlanification.getText());
+                    "Le menu 'Planification de projet' n'apparait pas sur le menu vertical de la page DetailDuProjet",
+                    "Planification de projet", pageDetailsProjet.menuPlanificationDeProjet.getText());
             assertEquals(
                     "Le menu 'Détail du projet' n'apparait pas sur le menu vertical de la page DetailDuProjet",
-                    "Détail du projet", pageDetailsProjet.menuPlanification.getText());
+                    "Détail du projet", pageDetailsProjet.menuDetailDuProjet.getText());
             assertEquals(
                     "Le menu 'Chargement des ressources' n'apparait pas sur le menu vertical de la page DetailDuProjet",
-                    "Chargement des ressources", pageDetailsProjet.menuChargement.getText());
+                    "Chargement des ressources", pageDetailsProjet.menuChargementDesRessources.getText());
             assertEquals(
                     "Le menu 'Allocation avancée' n'apparait pas sur le menu vertical de la page DetailDuProjet",
-                    "Allocation avancée", pageDetailsProjet.menuAllocation.getText());
+                    "Allocation avancée", pageDetailsProjet.menuAllocationAvancee.getText());
             assertEquals(
                     "Le menu 'Tableau de bord' n'apparait pas sur le menu vertical de la page DetailDuProjet",
-                    "Tableau de bord", pageDetailsProjet.menuTableau.getText());
+                    "Tableau de bord", pageDetailsProjet.menuTableauDeBord.getText());
         } catch (AssertionError e) {
             errors.add(e);
             Reporting.takeScreenShot(driver, "[PageCreerParticipant] - Eléments par défaut");
         }
         // Vérifier le nom et la présence des onglets présent dans le menu horizontal
         try {
-
-            // assertEquals("L'onglet Données générales n'apparait pas sur le menu
-            // horizontal de la page DetailDuProjet",
-            // pageDetailsProjet.menuDonneesGenerales.getText());
-            assertEquals(
-                    "L'onglet 'Coût' n'apparait pas sur le menu horizontal de la page DetailDuProjet",
-                    "Coût", pageDetailsProjet.menuCout1.getText());
-            assertEquals(
-                    "L'onglet 'Avancement' n'apparait pas sur le menu horizontal de la page DetailDuProjet",
-                    "Avancement", pageDetailsProjet.menuAvancement.getText());
-            assertEquals(
-                    "L'onglet 'Libellés' n'apparait pas sur le menu horizontal de la page DetailDuProjet",
-                    "Libellés", pageDetailsProjet.menuLibelles.getText());
-            assertEquals(
-                    "L'onglet 'Exigence de critère' n'apparait pas sur le menu horizontal de la page DetailDuProjet",
-                    "Exigence de critère", pageDetailsProjet.menuExigences.getText());
-            assertEquals(
-                    "L'onglet 'Matériels' n'apparait pas sur le menu horizontal de la page DetailDuProjet",
-                    "Matériels", pageDetailsProjet.menuMateriels.getText());
-            assertEquals(
-                    "L'onglet 'Formulaires qualité des tâches' qualité des tâches n'apparait pas sur le menu horizontal de la page DetailDuProjet",
-                    "Formulaires qualité des tâches", pageDetailsProjet.menuFormulaire.getText());
-            assertEquals(
-                    "L'onglet 'Autorisation' n'apparait pas sur le menu horizontal de la page DetailDuProjet",
-                    "Autorisation", pageDetailsProjet.menuAutorisation.getText());
+            assertTrue("L'onglet 'WBS (tâches)' n'apparaît pas",
+                    pageDetailsProjet.tabWbs.isDisplayed());
+            assertTrue("L'onglet 'Données générales' n'apparaît pas",
+                    pageDetailsProjet.tabDonneesGenerales.isDisplayed());
+            assertTrue("L'onglet 'Coût' n'apparaît pas",
+                    pageDetailsProjet.tabCout.isDisplayed());
+            assertTrue("L'onglet 'Avancement' n'apparaît pas",
+                    pageDetailsProjet.tabAvancement.isDisplayed());
+            assertTrue("L'onglet 'Libéllés' n'apparaît pas",
+                    pageDetailsProjet.tabLibelles.isDisplayed());
+            assertTrue("L'onglet 'Exigences de critère' n'apparaît pas",
+                    pageDetailsProjet.tabExigences.isDisplayed());
+            assertTrue("L'onglet 'Matériels' n'apparaît pas",
+                    pageDetailsProjet.tabMateriels.isDisplayed());
+            assertTrue("L'onglet 'Formulaires qualité des tâches' n'apparaît pas",
+                    pageDetailsProjet.tabFormulaire.isDisplayed());
+            assertTrue("L'onglet 'Autorisation' n'apparaît pas",
+                    pageDetailsProjet.tabAutorisation.isDisplayed());
         } catch (AssertionError e) {
             errors.add(e);
             Reporting.takeScreenShot(driver, "[PageCreerParticipant] - Eléments par défaut");
-
         }
-
         // Appel à la methode cliquer sur le bouton d'annulation d'edition (pour tester
         // le bouton annuler)
         pageDetailsProjet.clikButtonAnnulerEditionProjet(driver);
@@ -235,7 +225,7 @@ public class AppTest {
         // Verification de la creation du projet existe toujour
         try {
             assertEquals("[PageDetailsProjet] - L'onglet 'WBS (tâches) n'apparaît pas", "WBS (tâches)",
-                    pageDetailsProjet.menuWbs.getText());
+                    pageDetailsProjet.tabWbs.getText());
         } catch (AssertionError e) {
             errors.add(e);
         }
