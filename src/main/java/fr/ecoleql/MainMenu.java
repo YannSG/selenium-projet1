@@ -58,7 +58,7 @@ public class MainMenu extends WebPage {
         return pageParticipants;
     }
 
-    public PageListesProjet clickMenuCalendierProjet(WebDriver driver) {
+    public PageListeProjets clickMenuCalendierProjet(WebDriver driver) {
         // Explicit wait
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         // Instancier actions
@@ -72,7 +72,7 @@ public class MainMenu extends WebPage {
         // Cliquer sur le bouton
         optionProjetMenuCalendrier.click();
         // Instancier la nouvelle page "ListesProjets"
-        PageListesProjet pageListeProjets = PageFactory.initElements(driver, PageListesProjet.class);
+        PageListeProjets pageListeProjets = PageFactory.initElements(driver, PageListeProjets.class);
         // Attendre que le menu "Liste des projets" soit affiché
         wait.until(ExpectedConditions.elementToBeClickable(pageListeProjets.btnCreerProjet));
 

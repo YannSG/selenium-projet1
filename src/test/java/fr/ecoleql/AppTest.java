@@ -201,7 +201,7 @@ public class AppTest {
         }
         // verifier la creation du projet-->> Appel a la methode
         // clickMenuCalendierProjet
-        PageListesProjet pageListesProjet = pageIndex.clickMenuCalendierProjet(driver);
+        PageListeProjets pageListesProjet = pageIndex.clickMenuCalendierProjet(driver);
         // Verifier l'affichage de menu Listes des progets des projets
         try {
             assertEquals("le menue Planification de projet n'est pas present", "Liste des projets",
