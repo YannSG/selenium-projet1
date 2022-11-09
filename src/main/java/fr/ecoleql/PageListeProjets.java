@@ -17,6 +17,7 @@ public class PageListeProjets extends MainMenu {
     public WebElement btnCreerProjet;
     @FindBy(xpath = "//span[contains(text(),'supprimé')]")
     WebElement txtMsgValidationSuppression;
+    String text = "Liste des projets";
 
     public void deleteProjet(WebDriver driver, String code) {
         // Explicit wait
