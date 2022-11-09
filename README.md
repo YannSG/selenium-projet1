@@ -6,7 +6,7 @@ Constitution de l'équipe automatisation :
 ---------------------------------------
 
     * Fatima B.    - Ingénieure Réseaux et automaticienne Selenium/Java (S/J) Junior
-    * Benjamin A.  - Ingénieur Qualité logicielle et automaticien S/JJunior
+    * Benjamin A.  - Ingénieur Qualité logicielle et automaticien S/J Junior
     * Yann S.      - Expert outils et ingénieur automaticien S/J confirmé. *Tech lead*.
     * Sébastien P. - Test Analyst et ingénieur automatisation senior. Automaticien S/J débutant. *Scrum Master*. 
 
