@@ -6,7 +6,6 @@ import java.time.format.DateTimeFormatter;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -33,16 +32,12 @@ public class PageIndex extends MainMenu {
     @FindBy(xpath = "//td[contains(text(),'Planification des projets')]")
     public static WebElement buttonPlanificationProjet;
 
-
-    
-
     WebDriverWait wait;
 
     static LocalDateTime now = LocalDateTime.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-
-        // Cliquer sur l'icone "+" pour Accéder au formulaire de création d'un projet :
+    // Cliquer sur l'icone "+" pour Accéder au formulaire de création d'un projet :
     public void clickIconCreerProjet(WebDriver driver) {
         // Explicit wait
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
@@ -51,7 +46,8 @@ public class PageIndex extends MainMenu {
 
     }
 
-        // Créer un projet : Remplir les champs du modale et cliquer sur le Bouton "Accepter" 
+    // Créer un projet : Remplir les champs du modale et cliquer sur le Bouton
+    // "Accepter"
     public DetailDuProjet creerProjet(WebDriver driver, String Nom, String valeurCode) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
@@ -79,42 +75,10 @@ public class PageIndex extends MainMenu {
         }
 
         // Instanciation de la page : DetailDuProjet
-        DetailDuProjet detailDuProjet = PageFactory.initElements(driver,DetailDuProjet.class);
+        DetailDuProjet detailDuProjet = PageFactory.initElements(driver, DetailDuProjet.class);
         // Attendre que le bouton "menuWbs" soit cliquable
         wait.until(ExpectedConditions.visibilityOf(detailDuProjet.menuWbs));
         return detailDuProjet;
-    }
-
-
-
-    // creation d'une methode qui fait cliquer sur l'option projet du menu
-    // Calendrier + instanciation de la page Listes Projets
-    public PageListesProjet clickMenuCalendierProjet(WebDriver driver) {
-        // Explicit wait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        //System.out.println("wait OK");
-        // Instancier actions
-        actions = new Actions(driver);
-        //System.out.println("action OK");
-        // Se déplacer sur le bouton
-        wait.until(ExpectedConditions.elementToBeClickable(menuCalendrier));
-       // System.out.println("menuRessources = "+menuRessources);
-        //actions.moveToElement(menuRessources, 0, 0).perform();
-        //System.out.println("menuCalendrier = "+menuCalendrier);
-        wait.until(ExpectedConditions.elementToBeClickable(menuCalendrier));
-        actions.moveToElement(menuCalendrier).build().perform();
-        //System.out.println("move to element");
-        // Attendre que le bouton soit cliquable
-        wait.until(ExpectedConditions.elementToBeClickable(optionProjetMenuCalendrier));
-        // Cliquer sur le bouton
-        optionProjetMenuCalendrier.click();
-        System.out.println(getWebPageTitle());
-        // Instancier la nouvelle page "ListesProjets"
-        PageListesProjet pagelisteProjets = PageFactory.initElements(driver, PageListesProjet.class);
-        // Attendre que le menu "Liste des projets" soit affiché
-        wait.until(ExpectedConditions.visibilityOf(pagelisteProjets.list_projet));
-
-        return pagelisteProjets;
     }
 
 }

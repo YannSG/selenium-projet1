@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class PageListesProjet extends MainMenu {
 
-    @FindBy(partialLinkText = "//td[contains(text(),'Liste des projets')]")
-    WebElement list_projet;
+    @FindBy(xpath = "//img[@src='/libreplan/common/img/ico_add.png']")
+    public WebElement btnCreerProjet;
+
 }

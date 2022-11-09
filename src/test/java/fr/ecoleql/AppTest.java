@@ -151,14 +151,11 @@ public class AppTest {
 
     // @Test sur la creation des projets
     @Test
-    public void PRO_TA_01() throws Exception {
-
+    public void creationDeProjet() throws Exception {
         // Appel à la methode clickIconCreerProjet dans PageIndex
         pageIndex.clickIconCreerProjet(driver);
-
         // Appel à la methode "creerProjet" et Instanciation de la PageProjet
         DetailDuProjet detailDuProjet = pageIndex.creerProjet(driver, "PROJET_TEST1", "PRJTEST001");
-
         // Verification de la creation du projet: (Titre de l'oglet horizontal Menue WBS
         // ="WBS (tâches)")
         try {
@@ -166,59 +163,51 @@ public class AppTest {
         } catch (AssertionError e) {
             errors.add(e);
         }
-
         // Appel à la methode cliquer sur le bouton d'annulation d'edition (pour tester
         // le bouton annuler)
         detailDuProjet.clikButtonAnnulerEditionProjet(driver);
-
         // Verifier que la PopUp est bien apparue
         try {
             assertEquals(detailDuProjet.textPopUpAVerifier, detailDuProjet.textPopUp.getText());
         } catch (AssertionError e) {
             errors.add(e);
         }
-
         // Appel à la methode clique sur le bouton annuler de PopUp
         detailDuProjet.clikButtonAnnulerPopUp(driver);
-
         // Verification de la creation du projet existe toujour
         try {
             assertEquals("WBS (tâches)", detailDuProjet.menuWbs.getText());
         } catch (AssertionError e) {
             errors.add(e);
         }
-
         // Rappeler la methode cliquer sur le bouton d'annulation d'edition (pour tester
         // le bouton ok)
         detailDuProjet.clikButtonAnnulerEditionProjet(driver);
-
         // Verifier que la PopUp est bien apparue
         try {
             assertEquals(detailDuProjet.textPopUpAVerifier, detailDuProjet.textPopUp.getText());
         } catch (AssertionError e) {
             errors.add(e);
         }
-
         // Appel à la methode clique sur le bouton OK de PopUp
-       PageIndex pageIndex = detailDuProjet.clikButtonOkPopUp(driver);
-
-
-       // Verifier l'affichage de menu Planification des projets
-        try {assertFalse("le menue Planification de projet n'est pas present", PageIndex.buttonPlanificationProjet.isDisplayed());
+        PageIndex pageIndex = detailDuProjet.clikButtonOkPopUp(driver);
+        // Verifier l'affichage de menu Planification des projets
+        try {
+            assertFalse("le menue Planification de projet n'est pas present",
+                    PageIndex.buttonPlanificationProjet.isDisplayed());
         } catch (AssertionError e) {
             errors.add(e);
         }
-
-        // verifier la creation du projet-->> Appel a la methode clickMenuCalendierProjet
+        // verifier la creation du projet-->> Appel a la methode
+        // clickMenuCalendierProjet
         PageListesProjet pageListesProjet = pageIndex.clickMenuCalendierProjet(driver);
-
-
-        // // Verifier l'affichage de menu Listes des progets des projets
-
-        try {assertFalse("le menue Planification de projet n'est pas present", pageListesProjet.list_projet.isDisplayed());
-    } catch (AssertionError e) {
-        errors.add(e);
-    }
+        // Verifier l'affichage de menu Listes des progets des projets
+        try {
+            assertEquals("le menue Planification de projet n'est pas present", "Liste des projets",
+                    pageListesProjet.webPageTitle);
+        } catch (AssertionError e) {
+            errors.add(e);
+        }
 
     }
 

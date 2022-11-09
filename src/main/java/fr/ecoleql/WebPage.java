@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class WebPage {
 
-    @FindBy(xpath = "//div[@class=\"z-window-embedded-header\"]")
+    @FindBy(xpath = "//div[@class='z-window-embedded-header']")
     WebElement webPageTitle;
     @FindBy(xpath = "//div[@class='z-window-modal-cl']//td[text()='OK']")
     WebElement btnOKPopUp;

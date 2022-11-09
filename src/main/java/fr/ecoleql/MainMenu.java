@@ -58,34 +58,26 @@ public class MainMenu extends WebPage {
         return pageParticipants;
     }
 
-    /*// creation d'une methode qui fait cliquer sur l'option projet du menu
-    // Calendrier + instanciation de la page Listes Projets
-    public ListesProjet clickMenuCalendierProjet(WebDriver driver) {
+    public PageListesProjet clickMenuCalendierProjet(WebDriver driver) {
         // Explicit wait
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        //System.out.println("wait OK");
         // Instancier actions
         actions = new Actions(driver);
-        //System.out.println("action OK");
         // Se déplacer sur le bouton
         wait.until(ExpectedConditions.elementToBeClickable(menuCalendrier));
-       // System.out.println("menuRessources = "+menuRessources);
-        //actions.moveToElement(menuRessources, 0, 0).perform();
-        //System.out.println("menuCalendrier = "+menuCalendrier);
         wait.until(ExpectedConditions.elementToBeClickable(menuCalendrier));
         actions.moveToElement(menuCalendrier).build().perform();
-        //System.out.println("move to element");
         // Attendre que le bouton soit cliquable
         wait.until(ExpectedConditions.elementToBeClickable(optionProjetMenuCalendrier));
         // Cliquer sur le bouton
         optionProjetMenuCalendrier.click();
         // Instancier la nouvelle page "ListesProjets"
-        ListesProjet listeProjets = PageFactory.initElements(driver, ListesProjet.class);
+        PageListesProjet pageListeProjets = PageFactory.initElements(driver, PageListesProjet.class);
         // Attendre que le menu "Liste des projets" soit affiché
-       // wait.until(ExpectedConditions.visibilityOf(listeProjets.list_projet));
+        wait.until(ExpectedConditions.elementToBeClickable(pageListeProjets.btnCreerProjet));
 
-        return listeProjets;
-    }*/
+        return pageListeProjets;
+    }
 
     public boolean isLoggedIn() {
         if (btnLogout.isDisplayed()) {
