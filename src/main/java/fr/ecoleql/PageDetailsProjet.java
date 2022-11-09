@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class DetailDuProjet extends MainMenu {
+public class PageDetailsProjet extends MainMenu {
 
     WebDriverWait wait;
 
@@ -20,8 +20,6 @@ public class DetailDuProjet extends MainMenu {
     WebElement buttonEnregistrement;
     @FindBy(xpath = "//span[.='Les modifications non enregistrées seront perdues. Êtes-vous sûr ?']")
     WebElement textPopUp;
-
-    String textPopUpAVerifier = "Les modifications non enregistrées seront perdues. Êtes-vous sûr ?";
 
     // Creation de la methode : cliquer sur le bouton annuler edition projet
     public void clikButtonAnnulerEditionProjet(WebDriver driver) {

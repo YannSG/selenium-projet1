@@ -155,47 +155,55 @@ public class AppTest {
         // Appel à la methode clickIconCreerProjet dans PageIndex
         pageIndex.clickIconCreerProjet(driver);
         // Appel à la methode "creerProjet" et Instanciation de la PageProjet
-        DetailDuProjet detailDuProjet = pageIndex.creerProjet(driver, params.getProperty("projetNom"),
+        PageDetailsProjet pageDetailsProjet = pageIndex.creerProjet(driver, params.getProperty("projetNom"),
                 params.getProperty("projetCode"));
         // Verification de la creation du projet: (Titre de l'oglet horizontal Menue WBS
         // ="WBS (tâches)")
         try {
-            assertEquals("WBS (tâches)", detailDuProjet.menuWbs.getText());
+            assertEquals("[PageDetailsProjet] - L'onglet 'WBS (tâches) n'apparaît pas", "WBS (tâches)",
+                    pageDetailsProjet.menuWbs.getText());
         } catch (AssertionError e) {
             errors.add(e);
         }
         // Appel à la methode cliquer sur le bouton d'annulation d'edition (pour tester
         // le bouton annuler)
-        detailDuProjet.clikButtonAnnulerEditionProjet(driver);
+        pageDetailsProjet.clikButtonAnnulerEditionProjet(driver);
         // Verifier que la PopUp est bien apparue
         try {
-            assertEquals(detailDuProjet.textPopUpAVerifier, detailDuProjet.textPopUp.getText());
+            assertEquals(
+                    "[PageDetailsProjet] - Le message de confirmation d'annulation des modifications du projet n'apparaît pas correctement",
+                    "Les modifications non enregistrées seront perdues. Êtes-vous sûr ?",
+                    pageDetailsProjet.textPopUp.getText());
         } catch (AssertionError e) {
             errors.add(e);
         }
         // Appel à la methode clique sur le bouton annuler de PopUp
-        detailDuProjet.clikButtonAnnulerPopUp(driver);
+        pageDetailsProjet.clikButtonAnnulerPopUp(driver);
         // Verification de la creation du projet existe toujour
         try {
-            assertEquals("WBS (tâches)", detailDuProjet.menuWbs.getText());
+            assertEquals("[PageDetailsProjet] - L'onglet 'WBS (tâches) n'apparaît pas", "WBS (tâches)",
+                    pageDetailsProjet.menuWbs.getText());
         } catch (AssertionError e) {
             errors.add(e);
         }
         // Rappeler la methode cliquer sur le bouton d'annulation d'edition (pour tester
         // le bouton ok)
-        detailDuProjet.clikButtonAnnulerEditionProjet(driver);
+        pageDetailsProjet.clikButtonAnnulerEditionProjet(driver);
         // Verifier que la PopUp est bien apparue
         try {
-            assertEquals(detailDuProjet.textPopUpAVerifier, detailDuProjet.textPopUp.getText());
+            assertEquals(
+                    "[PageDetailsProjet] - Le message de confirmation d'annulation des modifications du projet n'apparaît pas correctement",
+                    "Les modifications non enregistrées seront perdues. Êtes-vous sûr ?",
+                    pageDetailsProjet.textPopUp.getText());
         } catch (AssertionError e) {
             errors.add(e);
         }
         // Appel à la methode clique sur le bouton OK de PopUp
-        PageIndex pageIndex = detailDuProjet.clikButtonOkPopUp(driver);
+        PageIndex pageIndex = pageDetailsProjet.clikButtonOkPopUp(driver);
         // Verifier l'affichage de menu Planification des projets
         try {
-            assertFalse("le menue Planification de projet n'est pas present",
-                    PageIndex.buttonPlanificationProjet.isDisplayed());
+            assertTrue("[PageIndex] - Le menu 'Planification des projets' n'apparaît pas",
+                    pageIndex.btnPlanificationProjet.isDisplayed());
         } catch (AssertionError e) {
             errors.add(e);
         }
@@ -204,8 +212,8 @@ public class AppTest {
         PageListeProjets pageListesProjet = pageIndex.clickMenuCalendierProjet(driver);
         // Verifier l'affichage de menu Listes des progets des projets
         try {
-            assertEquals("le menue Planification de projet n'est pas present", "Liste des projets",
-                    pageListesProjet.webPageTitle);
+            assertTrue("[PageListesProjet] - Le menu 'Liste des projets' n'apparaît pas",
+                    pageListesProjet.btnListeProjets.isDisplayed());
         } catch (AssertionError e) {
             errors.add(e);
         }
