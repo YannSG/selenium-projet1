@@ -50,7 +50,7 @@ public class AppTest {
     }
 
     @Test
-    public void GRE_01() throws Exception {
+    public void creationParticipant() throws Exception {
         // PDT 2 = Afficher la page "Liste des participants"
         PageParticipants pageParticipants = pageIndex.clickMenuRessourcesParticipants(driver);
         // PDT 3 = Afficher la page "Créer un participant"
@@ -136,7 +136,7 @@ public class AppTest {
             Reporting.takeScreenShot(driver,
                     "[PageParticipants] - Le menu 'Plus d'option' n'apparaît pas correctement");
         }
-        // Supprimer le participant et l'utilisateur lié créés
+        // Teardown : Supprimer le participant et l'utilisateur lié créés
         pageParticipants.deleteParticipant(driver, params.getProperty("participantID"), true);
         try {
             assertTrue(
