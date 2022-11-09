@@ -25,8 +25,8 @@
 
 #Agilité :
 
-    Kanban blablabla
-    Cérémonies agiles blablabla (Stand Up, et autres blablabla)
+    * Kanban blablabla
+    * Cérémonies agiles blablabla (Stand Up, et autres blablabla)
 
 ------------------------------
 Template des cas/pas de test :
