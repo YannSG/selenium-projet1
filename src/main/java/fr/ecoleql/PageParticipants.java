@@ -86,7 +86,7 @@ public class PageParticipants extends MainMenu {
         WebElement webElement = driver.findElement(By.xpath(
                 "//div[@class='clickable-rows z-grid']//table//tbody[@class='z-rows']/tr[" + i
                         + "]//img[@src='/libreplan/common/img/ico_borrar1.png']"));
-        wait.until(ExpectedConditions.elementToBeClickable(webPageTitle));
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
         // Valider la popup
         wait.until(ExpectedConditions.elementToBeClickable(btnOKPopUp));

@@ -53,11 +53,13 @@ public class WebPage {
     }
 
     @SuppressWarnings("null")
-    //// tr[@class='clickable-rows z-row'][1]//td[@class='z-row-inner'][1]
     public int getTableLineByContent(WebDriver driver, boolean equals, String string) {
         int i = 1;
-        List<WebElement> nRow = driver
-                .findElements(By.xpath("//div[@class='clickable-rows z-grid']//table//tbody[@class='z-rows']/tr"));
+        List<WebElement> nRow;
+        nRow = driver.findElements(By.xpath("//div[@class='clickable-rows z-grid']//table//tbody[@class='z-rows']/tr"));
+        if (nRow.isEmpty()) {
+            nRow = driver.findElements(By.xpath("//table//tbody[@class='z-rows']/tr"));
+        }
         for (WebElement row : nRow) {
             List<WebElement> l_cell = row.findElements(By.xpath("td"));
             for (WebElement cell : l_cell) {

@@ -155,7 +155,8 @@ public class AppTest {
         // Appel à la methode clickIconCreerProjet dans PageIndex
         pageIndex.clickIconCreerProjet(driver);
         // Appel à la methode "creerProjet" et Instanciation de la PageProjet
-        DetailDuProjet detailDuProjet = pageIndex.creerProjet(driver, "PROJET_TEST1", "PRJTEST001");
+        DetailDuProjet detailDuProjet = pageIndex.creerProjet(driver, params.getProperty("projetNom"),
+                params.getProperty("projetCode"));
         // Verification de la creation du projet: (Titre de l'oglet horizontal Menue WBS
         // ="WBS (tâches)")
         try {
@@ -209,6 +210,17 @@ public class AppTest {
             errors.add(e);
         }
 
+        // Teardown : Supprimer le participant et l'utilisateur lié créés
+        pageListesProjet.deleteProjet(driver, params.getProperty("projetCode"));
+        try {
+            assertTrue(
+                    "[PageListeProjets] - Le message de validation de suppression ne s'affiche pas",
+                    pageListesProjet.txtMsgValidationSuppression.isDisplayed());
+        } catch (AssertionError e) {
+            errors.add(e);
+            Reporting.takeScreenShot(driver,
+                    "[PageListeProjets] - Erreur d'affichage du message de validation de suppression de nouveau participant");
+        }
     }
 
     @After
