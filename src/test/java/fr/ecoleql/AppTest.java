@@ -49,9 +49,9 @@ public class AppTest {
 
     @Test
     public void creationParticipant() throws Exception {
-        // PDT 2 = Afficher la page "Liste des participants"
+        // PDT 2 = Accéder à la page de gestion des participants
         PageParticipants pageParticipants = pageIndex.clickMenuRessourcesParticipants(driver);
-        // PDT 3 = Afficher la page "Créer un participant"
+        // PDT 3 = Créer un participant - Accès au formulaire de création
         PageCreerParticipant pageCreerParticipant = pageParticipants.clickBtnCreer(driver);
         try {
             assertTrue("[PageCreerParticipants] - L'onglet 'Données personnelles' est absent",
@@ -62,7 +62,7 @@ public class AppTest {
             errors.add(e);
             Reporting.takeScreenShot(driver, "[PageCreerParticipant] - Onglet par défaut");
         }
-        // PDT 4 = Vérifier la conformité de la page "Créer un participant"
+        // PDT 4 = Créer un participant - Conformité de l'onglet "Données personnelles"
         try {
             assertTrue("[PageCreerParticipants] - Le bouton 'Générer le code' n'est pas sélectionné par défaut",
                     pageCreerParticipant.chkCode.isSelected());
@@ -75,7 +75,7 @@ public class AppTest {
             errors.add(e);
             Reporting.takeScreenShot(driver, "[PageCreerParticipant] - Eléments par défaut");
         }
-        // PDT 5 = Créer un nouveau participant
+        // PDT 5 = Créer un participant - Bouton [Enregistrer]
         pageCreerParticipant.saisirDonneesDeBase(driver, params.getProperty("participantPrenom"),
                 params.getProperty("participantNom"), params.getProperty("participantID"));
         pageCreerParticipant.radioUtilisateurLieCreerUnNouvelUtilisateur.click();
@@ -102,7 +102,7 @@ public class AppTest {
             Reporting.takeScreenShot(driver,
                     "[PageParticipants] - Le nouveau participant créer n'apparaît pas correctement dans le tableau");
         }
-        // PDT 6 = Filtrer par détails personnels
+        // PDT 6 = Utilisation du filtre "Détails personnels"
         pageParticipants.filter(driver, params.getProperty("participantPrenom"));
         try {
             assertTrue("[PageParticipants] - Le nom du participant filtré n'apparaît pas dans le tableau",
@@ -117,7 +117,7 @@ public class AppTest {
             Reporting.takeScreenShot(driver,
                     "[PageParticipants] - Le participant filtré n'apparaît pas correctement dans le tableau");
         }
-        // PDT 7 = Menu 'Plus d'options'
+        // PDT 7 = Filtre "Plus d'options" - conformité des options
         pageParticipants.clickBtnPlusDOptions(driver);
         try {
             assertTrue(
@@ -134,6 +134,7 @@ public class AppTest {
             Reporting.takeScreenShot(driver,
                     "[PageParticipants] - Le menu 'Plus d'option' n'apparaît pas correctement");
         }
+
         // Teardown = Supprimer le participant et l'utilisateur lié créés
         pageParticipants.deleteParticipant(driver, params.getProperty("participantID"), true);
         try {
