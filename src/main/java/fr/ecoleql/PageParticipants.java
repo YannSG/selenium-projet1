@@ -58,7 +58,7 @@ public class PageParticipants extends MainMenu {
 
     public PageCreerParticipant clickBtnCreer(WebDriver driver) {
         // Explicit wait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         // Cliquer sur le bouton créer
         btnCreer.click();
         // Instancier la nouvelle page
@@ -71,7 +71,7 @@ public class PageParticipants extends MainMenu {
 
     public void clickBtnPlusDOptions(WebDriver driver) {
         // Explicit wait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         // Cliquer sur le bouton "plus d'options"
         btnPlusDOptions.click();
         wait.until(ExpectedConditions.elementToBeClickable(menuType));
@@ -79,7 +79,7 @@ public class PageParticipants extends MainMenu {
 
     public void deleteParticipant(WebDriver driver, String ID, boolean utilisateurLie) {
         // Explicit wait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         // Récupérer la ligne du tableau correspondant à l'ID de l'utilisateur
         int i = getTableLineByContent(driver, true, ID);
         // Cliquer sur le bouton de suppression de cet utilisateur
@@ -99,7 +99,7 @@ public class PageParticipants extends MainMenu {
 
     public void filter(WebDriver driver, String nom) {
         // Explicit wait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         // Filtrer
         fieldDetailPersonnels.sendKeys(nom);
         btnFiltre.click();

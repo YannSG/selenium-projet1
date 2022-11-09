@@ -73,7 +73,7 @@ public class MainMenu extends WebPage {
 
     public PageParticipants clickMenuRessourcesParticipants(WebDriver driver) {
         // Explicit wait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         // Instancier actions
         actions = new Actions(driver);
         // Se déplacer sur le bouton
@@ -92,7 +92,7 @@ public class MainMenu extends WebPage {
 
     public PageListeProjets clickMenuCalendierProjet(WebDriver driver) {
         // Explicit wait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         // Instancier actions
         actions = new Actions(driver);
         // Se déplacer sur le bouton

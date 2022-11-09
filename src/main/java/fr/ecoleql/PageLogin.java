@@ -22,7 +22,7 @@ public class PageLogin extends MainMenu {
 
     public PageIndex login(WebDriver driver, String username, String password) {
         // Explicit wait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         // Entrer le username
         fieldUsername.clear();
         fieldUsername.sendKeys(username);

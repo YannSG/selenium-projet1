@@ -61,7 +61,7 @@ public class PageCreerParticipant extends MainMenu {
 
     public void saisirDonneesDeBase(WebDriver driver, String prenom, String nom, String ID) {
         // Explicit wait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         // Renseigner les informations du formulaire
         fieldPrenom.sendKeys(prenom);
         fieldNom.sendKeys(nom);
@@ -70,7 +70,7 @@ public class PageCreerParticipant extends MainMenu {
 
     public void creerNouvelUtilisateur(WebDriver driver, String nom, String mdp, String mail) {
         // Explicit wait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         // Renseigner les informations du formulaire
         fieldNomUtilisateur.sendKeys(nom);
         fieldMDP.sendKeys(mdp);
@@ -80,7 +80,7 @@ public class PageCreerParticipant extends MainMenu {
 
     public PageParticipants enregistrer(WebDriver driver) {
         // Explicit wait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         btnEnregistrer.click();
         // Instancier la nouvelle page
         PageParticipants pageParticipants = PageFactory.initElements(driver,

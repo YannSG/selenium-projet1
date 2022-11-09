@@ -21,7 +21,7 @@ public class PageListeProjets extends PageIndex {
 
     public void deleteProjet(WebDriver driver, String code) {
         // Explicit wait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         // Récupérer la ligne du tableau correspondant au code du projet
         int i = getTableLineByContent(driver, true, code);
         // Cliquer sur le bouton de suppression de ce projet

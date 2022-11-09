@@ -42,7 +42,7 @@ public class PageIndex extends MainMenu {
     // Cliquer sur l'icone "+" pour Accéder au formulaire de création d'un projet :
     public void clickIconCreerProjet(WebDriver driver) {
         // Explicit wait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         buttonCreerProjet.click();
         wait.until(ExpectedConditions.elementToBeClickable(buttonAccepter));
 
@@ -51,7 +51,7 @@ public class PageIndex extends MainMenu {
     // Créer un projet : Remplir les champs du modale et cliquer sur le Bouton
     // "Accepter"
     public PageDetailsProjet creerProjet(WebDriver driver, String Nom, String valeurCode) {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
         // ecrire le nom
         fieldNom.clear();

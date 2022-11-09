@@ -29,14 +29,14 @@ public class PageDetailsProjet extends MainMenu {
     // Creation de la methode cliquer sur le bouton annuler de PoupUp
     public void clikButtonAnnulerPopUp(WebDriver driver) {
         // driver.switchTo().frame("oG7Qxa");
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(btnAnnulerPopUp));
         btnAnnulerPopUp.click();
     }
 
     // Creation de la methode cliquer sur le bouton OK de PoupUp
     public PageIndex clikButtonOkPopUp(WebDriver driver) {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(btnOKPopUp));
         btnOKPopUp.click();
         // Instancier la nouvelle page "ListesProjets"
