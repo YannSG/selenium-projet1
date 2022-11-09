@@ -1,0 +1,6 @@
+2022-11-09T15:25:16.231417700
+L'onglet Planification du projet n'apparait pas sur le menu vertical de la page DetailDuProjet expected:<[]> but was:<[Planification de projet]>
+2022-11-09T15:25:16.231417700
+L'onglet Coût n'apparait pas sur le menu horizontal de la page DetailDuProjet expected:<[]> but was:<[Coût]>
+2022-11-09T15:25:16.231417700
+le menue Planification de projet n'est pas present expected:<Liste des projets> but was:<[[ChromeDriver: chrome on WINDOWS (81f60830a1f580e07a3b240da3947935)] -> xpath: //div[@class='z-window-embedded-header']]>

@@ -163,6 +163,37 @@ public class AppTest {
         } catch (AssertionError e) {
             errors.add(e);
         }
+
+        // Vérifier le nom et la présence des onglets présent dans le menu vertical
+        try {
+            assertEquals("L'onglet Planification du projet n'apparait pas sur le menu vertical de la page DetailDuProjet","", detailDuProjet.menuPlanification.getText());
+            assertEquals("L'onglet Détail du projet n'apparait pas sur le menu vertical de la page DetailDuProjet","", detailDuProjet.menuPlanification.getText());
+            assertEquals("L'onglet Chargement deu projet n'apparait pas sur le menu vertical de la page DetailDuProjet","", detailDuProjet.menuChargement.getText());
+            assertEquals("L'onglet Allocation avancée n'apparait pas sur le menu vertical de la page DetailDuProjet","", detailDuProjet.menuAllocation.getText());
+            assertEquals("L'onglet Tableau de bord n'apparait pas sur le menu vertical de la page DetailDuProjet","", detailDuProjet.menuTableau.getText());
+        }
+        catch (AssertionError e) {
+            errors.add(e);
+            Reporting.takeScreenShot(driver, "[PageCreerParticipant] - Eléments par défaut");
+        }
+ // Vérifier le nom et la présence des onglets présent dans le menu horizontal
+ try {
+           
+    // assertEquals("L'onglet Données générales n'apparait pas sur le menu horizontal de la page DetailDuProjet", detailDuProjet.menuDonneesGenerales.getText());
+    assertEquals("L'onglet Coût n'apparait pas sur le menu horizontal de la page DetailDuProjet","", detailDuProjet.menuCout1.getText());
+    assertEquals("L'onglet Avancement n'apparait pas sur le menu horizontal de la page DetailDuProjet","", detailDuProjet.menuAvancement.getText());
+    assertEquals("L'onglet Libellés n'apparait pas sur le menu horizontal de la page DetailDuProjet","", detailDuProjet.menuLibelles.getText());
+    assertEquals("L'onglet Exigence  n'apparait pas sur le menu horizontal de la page DetailDuProjet","", detailDuProjet.menuExigences.getText());
+    assertEquals("L'onglet Matériels n'apparait pas sur le menu horizontal de la page DetailDuProjet","", detailDuProjet.menuMateriels.getText());
+    assertEquals("L'onglet Formulaire qualité des tâches n'apparait pas sur le menu horizontal de la page DetailDuProjet","", detailDuProjet.menuFormulaire.getText());
+    assertEquals("L'onglet Autorisation n'apparait pas sur le menu horizontal de la page DetailDuProjet","", detailDuProjet.menuAutorisation.getText());
+ }
+    catch (AssertionError e) {
+        errors.add(e);
+        Reporting.takeScreenShot(driver, "[PageCreerParticipant] - Eléments par défaut");
+    
+    }
+
         // Appel à la methode cliquer sur le bouton d'annulation d'edition (pour tester
         // le bouton annuler)
         pageDetailsProjet.clikButtonAnnulerEditionProjet(driver);
@@ -231,7 +262,7 @@ public class AppTest {
 
     @After
     public void after() throws Exception {
-        driver.quit();
+        //driver.quit();
         Reporting.writeReport(errors);
     }
 
