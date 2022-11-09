@@ -1,10 +1,22 @@
 # selenium-projet1
  Projet 1 - Groupe 3
+ 
+---------------------------------------
+Constitution de l'équipe automatisation :
+---------------------------------------
 
-----------------------------------------
- Bonnes pratiques pour les PageObjects :
-----------------------------------------
-    
+    * Fatima B.    - Ingénieure Réseaux et automaticienne Selenium/Java (S/J) Junior
+    * Benjamin A.  - Ingénieur Qualité logicielle et automaticien S/J Junior
+    * Yann S.      - Expert outils et ingénieur automaticien S/J confirmé. *Tech lead*.
+    * Sébastien P. - Test Analyst et ingénieur automatisation senior. Automaticien S/J débutant. *Scrum Master*. 
+
+------------------
+ Bonnes pratiques :
+------------------
+
+#PageObjects :
+
+
     Lorsque vous découpez votre architecture d’automatisation en couches et que vous concevez les Page Objects, 
     vous devez respecter plusieurs règles générales :
     
@@ -15,6 +27,15 @@
     * Seul le Page Object doit contenir les appels aux fonctions Selenium.
     * Un Page Object n'a pas besoin de couvrir toute la page ou le formulaire. 
     Il peut contrôler une section ou une autre partie spécifique de celle-ci.
+
+#GitHub rules :
+
+    Blablabla
+
+#Agilité :
+
+    * Kanban blablabla
+    * Cérémonies agiles blablabla (Stand Up, et autres blablabla)
 
 ------------------------------
 Template des cas/pas de test :
