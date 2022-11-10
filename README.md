@@ -30,12 +30,12 @@ Constitution de l'équipe automatisation :
 
 #GitHub rules :
 
-    Blablabla
+    A préciser (règles branches/commits/pull requests/gestions des conflits etc.)
 
 #Agilité :
 
-    * Kanban blablabla
-    * Cérémonies agiles blablabla (Stand Up, et autres blablabla)
+    * Kanban dans GitHub
+    * Cérémonies agiles (Stand Up, et autres aspect comitologie pour feedback régulier au sein de l'équipe et avec les autres acteurs)
 
 ------------------------------
 Template des cas/pas de test :
